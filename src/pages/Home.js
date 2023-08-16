@@ -1,34 +1,8 @@
-import "../src/App.css";
-import React, { useState } from "react";
-import Navigation from "./components/Navbar/Navbar";
-import "bootstrap/dist/css/bootstrap.css";
-// Put any other imports below so that CSS from your
-// components takes precedence over default styles.
-import NewRegistration from "./components/NewRegistration/NewRegistration";
-import { createBrowserRouter } from "react-router-dom";
-import OutputRegistration from "./components/OutputRegistration/OutputRegistration";
-import HomePage from "./pages/Home";
-//import { createBrowserRouter } from "react-router-dom";
+import Navigation from "../components/Navbar/Navbar";
 
-createBrowserRouter([{ path: "/", element: <HomePage /> }, { path: "" }]);
-
-function App() {
-  // const addRegistrationHandler = (registration) => {
-  //   console.log("In App.js");
-  //   console.log(registration);
-  // };
-
-  const [registrationData, setRegistrationData] = useState(null);
-
-  const addRegistrationHandler = (registration) => {
-    setRegistrationData(registration);
-    console.log(registrationData);
-  };
-
+function HomePage() {
   return (
     <body>
-      <NewRegistration onAddRegistration={addRegistrationHandler} />
-
       <div className="App">
         <header className="App-header">
           <Navigation />
@@ -112,4 +86,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;
