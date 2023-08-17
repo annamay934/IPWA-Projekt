@@ -5,12 +5,20 @@ import "bootstrap/dist/css/bootstrap.css";
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import NewRegistration from "./components/NewRegistration/NewRegistration";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import OutputRegistration from "./components/OutputRegistration/OutputRegistration";
 import HomePage from "./pages/Home";
+import PrivacyPage from "./pages/Privacy";
+import ImprintPage from "./pages/Imprint";
+import ContactPage from "./pages/Contact";
 //import { createBrowserRouter } from "react-router-dom";
 
-createBrowserRouter([{ path: "/", element: <HomePage /> }, { path: "" }]);
+const router = createBrowserRouter([
+  { path: "/", element: <HomePage /> },
+  { path: "/contact", element: <ContactPage /> },
+  { path: "/privacy", element: <PrivacyPage /> },
+  { path: "/imprint", element: <ImprintPage /> },
+]);
 
 function App() {
   // const addRegistrationHandler = (registration) => {
@@ -27,8 +35,7 @@ function App() {
 
   return (
     <body>
-      <NewRegistration onAddRegistration={addRegistrationHandler} />
-
+      <RouterProvider router={router} />;
       <div className="App">
         <header className="App-header">
           <Navigation />
@@ -47,17 +54,16 @@ function App() {
           abgeholt werden.
         </p>
       </section>
-
       <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
         </h2>
+        <NewRegistration onAddRegistration={addRegistrationHandler} />
         <p>
           Sie werden nach der Regstrierung auf eine Bestätigungsseite
           weitergeleitezt, bei dem Sie ihre Eingaben einsehen können.
         </p>
       </section>
-
       <section>
         <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
         <p>
@@ -70,7 +76,6 @@ function App() {
           Fußabdruck der Modeindustrie.
         </p>
       </section>
-
       <section>
         <h2 className="custom-h2">Nachhaltige Mode:</h2>
         <p>
@@ -83,7 +88,6 @@ function App() {
           vermeiden.
         </p>
       </section>
-
       <section>
         <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
         <p>
@@ -95,7 +99,6 @@ function App() {
           werden und gemeinsam einen positiven Einfluss auf die Welt zu haben.
         </p>
       </section>
-
       <section>
         <h2 className="custom-h2">Vielen Dank für Ihre Unterstützung:</h2>
         <p>

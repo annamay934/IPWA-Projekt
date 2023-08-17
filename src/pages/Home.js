@@ -1,4 +1,5 @@
 import Navigation from "../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
