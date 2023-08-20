@@ -1,21 +1,11 @@
-import Navigation from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
-
 function ContactPage() {
   return (
     <div>
       <body>
-        <div className="App">
-          <header className="App-header">
-            <Navigation />
-          </header>
-          <div className="background-image"></div>
-        </div>
         <section>
           <h1 className="custom-h1">
             Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
           </h1>
-          <br />
           <p>
             Gerne unterstützen wir Sie dabei, Ihren Beitrag zum Klimawandel zu
             leisten. Die Klamotten können entweder an der Geschäftsstelle des
@@ -26,7 +16,6 @@ function ContactPage() {
 
         <div className="background-image">
           <h1 className="custom-h1">Kontaktdaten</h1>
-          <br />
         </div>
         <div id="page" className="container" style={{ textAlign: "center" }}>
           <div className="row">
@@ -106,7 +95,6 @@ function ContactPage() {
           </p>
         </section>
       </body>
-      <Footer />
     </div>
   );
 }

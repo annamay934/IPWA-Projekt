@@ -30,11 +30,9 @@ const Navigation = () => {
               <NavDropdown.Item href="https://www.facebook.com/Kleiderspenden">
                 Facebook
               </NavDropdown.Item>
-              <NavDropdown.Item to="/services">
-                Unsere Leistungen
-              </NavDropdown.Item>
+              <Link to="/services">Unsere Leistungen</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item to="/aboutus">Über uns</NavDropdown.Item>
+              <Link to="/aboutus">Über uns</Link>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

@@ -1,20 +1,10 @@
-import Navigation from "../components/Navbar/Navbar";
-import { Link } from "react-router-dom";
-
 function HomePage() {
   return (
     <body>
-      <div className="App">
-        <header className="App-header">
-          <Navigation />
-        </header>
-        <div className="background-image"></div>
-      </div>
       <section>
         <h1 className="custom-h1">
           Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
         </h1>
-        <br />
         <p>
           Gerne unterstützen wir Sie dabei, Ihren Beitrag zum Klimawandel zu
           leisten. Die Klamotten können entweder an der Geschäftsstelle des
@@ -23,7 +13,7 @@ function HomePage() {
         </p>
       </section>
 
-      <section>
+      {/* <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
         </h2>
@@ -31,7 +21,7 @@ function HomePage() {
           Sie werden nach der Regstrierung auf eine Bestätigungsseite
           weitergeleitezt, bei dem Sie ihre Eingaben einsehen können.
         </p>
-      </section>
+      </section> */}
 
       <section>
         <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>

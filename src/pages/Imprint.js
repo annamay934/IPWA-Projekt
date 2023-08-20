@@ -1,16 +1,7 @@
-import Navigation from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
-
 const ImprintPage = () => {
   return (
     <div>
       <body>
-        <div className="App">
-          <header className="App-header">
-            <Navigation />
-          </header>
-          <div className="background-image"></div>
-        </div>
         <section>
           <h1 className="custom-h1">
             Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
@@ -27,7 +18,7 @@ const ImprintPage = () => {
           <h1 class="custom-h1">Impressum</h1>
           <br />
         </div>
-        <div id="page" class="container" style="text-align: center">
+        <div id="page" class="container" style={{ textAlign: "center" }}>
           <div class="row">
             <div class="col-md-6 col-md-offset-3 mx-auto text-center">
               <div class="form-group">
@@ -67,8 +58,6 @@ const ImprintPage = () => {
             </div>
           </div>
         </div>
-
-        <Footer />
       </body>
     </div>
   );

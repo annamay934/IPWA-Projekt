@@ -1,16 +1,7 @@
-import Navigation from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
-
 const PrivacyPage = () => {
   return (
     <div>
       <body>
-        <div className="App">
-          <header className="App-header">
-            <Navigation />
-          </header>
-          <div className="background-image"></div>
-        </div>
         <section>
           <h1 className="custom-h1">
             Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
@@ -214,8 +205,6 @@ const PrivacyPage = () => {
             <p>Quelle: Erstellt mit dem Datenschutz Generator von AdSimple</p>
           </div>
         </section>
-
-        <Footer />
       </body>
     </div>
   );
