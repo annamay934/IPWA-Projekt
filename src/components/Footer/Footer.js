@@ -1,19 +1,25 @@
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
 const Footer = () => {
   return (
-    <nav className="navbar-brand1">
-      <div className="container-fluid">
-        <footer>
+    <Card className="text-left">
+      <Card.Header></Card.Header>
+      <Card.Body>
+        <Card.Title></Card.Title>
+        <Card.Text>
           <Link className="navbar-brand1" to="/privacy">
             Datenschutz
           </Link>
+        </Card.Text>
+        <Card.Text>
           <Link className="navbar-brand1" to="/imprint">
             Impressum
           </Link>
-        </footer>
-      </div>
-    </nav>
+        </Card.Text>
+      </Card.Body>
+      <Card.Footer className="text-muted"></Card.Footer>
+    </Card>
   );
 };
 

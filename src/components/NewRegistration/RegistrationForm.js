@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
 
 const RegistrationForm = (props) => {
   //wenn 1. Formular ausgewählt wird, verschwindet das zweite für den Homepage Besucher
@@ -81,7 +82,7 @@ const RegistrationForm = (props) => {
       location2: enteredLocation2,
     };
 
-    //Setzen der Zustände nach Dürcken auf "submit" auf leere Zeilenreihen
+    //Setzen der Zustände nach Drücken auf "submit" auf leere Zeilenreihen
     props.onSaveRegistrationData(registrationData);
     setEnteredClothes1("");
     setEnteredLocation1("");
@@ -98,9 +99,13 @@ const RegistrationForm = (props) => {
     <form onSubmit={submitHandler}>
       <div className="form-group">
         <strong>
-          <button type="button" onClick={toggleForm1}>
+          <Button
+            type="button"
+            onClick={toggleForm1}
+            variant="outline-secondary"
+          >
             Übergabe an der Geschäftsstelle
-          </button>
+          </Button>
         </strong>
         {showForm1 && !showForm2 && (
           <div id="formContainer1">
@@ -143,9 +148,13 @@ const RegistrationForm = (props) => {
         <div />
         <div className="form-group">
           <strong>
-            <button type="button" onClick={toggleForm2}>
+            <Button
+              type="button"
+              onClick={toggleForm2}
+              variant="outline-secondary"
+            >
               Abholung
-            </button>
+            </Button>
           </strong>
           {showForm2 && !showForm1 && (
             <div id="formContainer">
@@ -246,9 +255,9 @@ const RegistrationForm = (props) => {
           )}
         </div>
         {(showForm1 || showForm2) && (
-          <button type="submit" className="btn btn-primary">
+          <Button type="submit" variant="outline-primary">
             Registrieren
-          </button>
+          </Button>
         )}
       </div>
     </form>
