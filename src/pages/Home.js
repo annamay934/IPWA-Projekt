@@ -1,3 +1,5 @@
+import RegistrationForm from "../components/NewRegistration/RegistrationForm";
+
 function HomePage() {
   return (
     <body>
@@ -13,15 +15,16 @@ function HomePage() {
         </p>
       </section>
 
-      {/* <section>
+      <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
         </h2>
+        <RegistrationForm />
         <p>
           Sie werden nach der Regstrierung auf eine Bestätigungsseite
-          weitergeleitezt, bei dem Sie ihre Eingaben einsehen können.
+          weitergeleitet. Damit ist ihre Registrierung erfolgreich gewesen.
         </p>
-      </section> */}
+      </section>
 
       <section>
         <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>

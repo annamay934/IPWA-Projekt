@@ -14,6 +14,7 @@ import ContactPage from "./pages/Contact";
 import AboutUsPage from "./pages/AboutUs";
 import ServicesPage from "./pages/Services";
 import RootLayout from "./pages/Root";
+import ErrorPage from "./pages/Error";
 
 //import { createBrowserRouter } from "react-router-dom";
 

@@ -1,3 +1,5 @@
+import Navigation from "../components/Navbar/Navbar";
+
 const ErrorPage = () => {
   return (
     <>
