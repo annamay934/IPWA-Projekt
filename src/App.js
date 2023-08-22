@@ -1,12 +1,12 @@
 import "../src/App.css";
 import React, { useState } from "react";
-import Navigation from "./components/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import NewRegistration from "./components/NewRegistration/NewRegistration";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import OutputRegistration from "./components/OutputRegistration/OutputRegistration";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import HomePage from "./pages/Home";
 import PrivacyPage from "./pages/Privacy";
 import ImprintPage from "./pages/Imprint";
@@ -35,11 +35,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  // const addRegistrationHandler = (registration) => {
-  //   console.log("In App.js");
-  //   console.log(registration);
-  // };
-
   const [registrationData, setRegistrationData] = useState(null);
 
   const addRegistrationHandler = (registration) => {
@@ -51,6 +46,9 @@ function App() {
     <body>
       <RouterProvider router={router}>
         <NewRegistration onAddRegistration={addRegistrationHandler} />
+        <section>
+          <OutputRegistration displayRegistrationData={registrationData} />
+        </section>
       </RouterProvider>
     </body>
   );

@@ -122,7 +122,7 @@ const RegistrationForm = (props) => {
                 name="Kleiderart1"
                 value={enteredClothes1}
                 onChange={clothes1ChangeHandler}
-                placeholder="Hemd, T-Shirt, Hose, Socken"
+                placeholder="Hemd, T-Shirt, Hose"
               />
             </div>
             <div className="form-group">
@@ -255,9 +255,7 @@ const RegistrationForm = (props) => {
           )}
         </div>
         {(showForm1 || showForm2) && (
-          <Button type="submit" variant="outline-primary">
-            Registrieren
-          </Button>
+          <Button type="submit">Registrieren</Button>
         )}
       </div>
     </form>
