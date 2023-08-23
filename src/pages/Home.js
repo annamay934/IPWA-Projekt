@@ -1,6 +1,48 @@
+import React, { useState, useEffect } from "react";
 import RegistrationForm from "../components/NewRegistration/RegistrationForm";
+import OutputRegistration from "../components/OutputRegistration/OutputRegistration";
 
-function HomePage() {
+const HomePage = () => {
+  const [registrationData, setRegistrationData] = useState(null);
+
+  const saveRegistrationDataHandler = (enteredRegistrationData) => {
+    const registrationData = {
+      ...enteredRegistrationData,
+      id: Math.random().toString(),
+    };
+    console.log(registrationData);
+    //props.onAddRegistration(registrationData);
+    setRegistrationData(registrationData);
+  };
+
+  const [dummyData, setDummyData] = useState([]);
+
+  const fetchRegistrationDataHandler = () => {
+    const apiUrl = "https://api.jsonserver.io/UserInputRegistrationForm";
+    const headers = new Headers();
+    headers.append("X-Jsio-Token", "00b52ae22cb418afbee530f17a161298");
+
+    fetch(apiUrl, { headers })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setDummyData(data.results);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchRegistrationDataHandler();
+  }, []);
+
+  console.log(dummyData);
+
   return (
     <body>
       <section>
@@ -14,12 +56,16 @@ function HomePage() {
           abgeholt werden.
         </p>
       </section>
-
+      <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
+      <OutputRegistration
+        displayRegistrationData={registrationData}
+        displayDummyData={dummyData}
+      />
       <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
         </h2>
-        <RegistrationForm />
+
         <p>
           Sie werden nach der Regstrierung auf eine Bestätigungsseite
           weitergeleitet. Damit ist ihre Registrierung erfolgreich gewesen.
@@ -78,6 +124,6 @@ function HomePage() {
       </section>
     </body>
   );
-}
+};
 
 export default HomePage;

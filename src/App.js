@@ -1,9 +1,8 @@
 import "../src/App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
-import NewRegistration from "./components/NewRegistration/NewRegistration";
 import OutputRegistration from "./components/OutputRegistration/OutputRegistration";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -16,8 +15,6 @@ import ServicesPage from "./pages/Services";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 
-//import { createBrowserRouter } from "react-router-dom";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +22,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <HomePage /> },
+      {
+        path: "/success",
+        element: <OutputRegistration />,
+      },
       { path: "/contact", element: <ContactPage /> },
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/imprint", element: <ImprintPage /> },
@@ -34,24 +35,20 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
-  const [registrationData, setRegistrationData] = useState(null);
+const App = () => {
+  // const [registrationData, setRegistrationData] = useState(null);
 
-  const addRegistrationHandler = (registration) => {
-    setRegistrationData(registration);
-    console.log(registrationData);
-  };
+  // const addRegistrationHandler = (registration) => {
+  //   setRegistrationData(registration);
+  //   console.log(registrationData);
+  // <HomePage onAddRegistration={addRegistrationHandler} />
+  // };
 
   return (
-    <body>
-      <RouterProvider router={router}>
-        <NewRegistration onAddRegistration={addRegistrationHandler} />
-        <section>
-          <OutputRegistration displayRegistrationData={registrationData} />
-        </section>
-      </RouterProvider>
-    </body>
+    <RouterProvider router={router}>
+      <HomePage />
+    </RouterProvider>
   );
-}
+};
 
 export default App;
