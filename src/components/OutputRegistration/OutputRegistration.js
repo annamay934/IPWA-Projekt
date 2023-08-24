@@ -2,36 +2,52 @@ import React from "react";
 
 const OutputRegistration = (props) => {
   console.log(props);
-  if (!props.displayRegistrationData) {
+
+  const hasNonEmptyString = (obj) => {
+    return Object.values(obj).some(
+      (value) => typeof value === "string" && value.trim() !== ""
+    );
+  };
+
+  if (
+    props.displayRegistrationData &&
+    hasNonEmptyString(props.displayRegistrationData)
+  ) {
+    const { clothes1, location1, clothes2, location2 } =
+      props.displayRegistrationData;
+
     return (
       <div>
         <h2>Registrierungsdaten</h2>
-        <p>Vorname: {props.displayDummyData.firstName}</p>
-        <p>Nachname: {props.displayDummyData.lastName}</p>
-        <p>Straße: {props.displayDummyData.street}</p>
-        <p>Postleitzahl: {props.displayDummyData.zip}</p>
-        <p>Wohnort: {props.displayDummyData.city}</p>
-        <p>Kleiderart: {props.displayDummyData.clothes1}</p>
-        <p>Krisengebiet: {props.displayDummyData.location1}</p>
+        <p>Vorname: {props.displayRegistrationData.firstName}</p>
+        <p>Nachname: {props.displayRegistrationData.lastName}</p>
+        <p>Straße: {props.displayRegistrationData.street}</p>
+        <p>Postleitzahl: {props.displayRegistrationData.zip}</p>
+        <p>Wohnort: {props.displayRegistrationData.city}</p>
+        {clothes1 && <p>Kleiderart: {clothes1}</p>}
+        {clothes2 && <p>Kleiderart: {clothes2}</p>}
+        {location1 && <p>Krisengebiet: {location1}</p>}
+        {location2 && <p>Krisengebiet: {location2}</p>}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h2>Registrierungsdaten</h2>
+        {props.displayDummyData.map((dummyData, index) => (
+          <div key={index}>
+            <p>Vorname: {dummyData.firstName}</p>
+            <p>Nachname: {dummyData.lastName}</p>
+            <p>Straße: {dummyData.street}</p>
+            <p>Postleitzahl: {dummyData.zip}</p>
+            <p>Wohnort: {dummyData.city}</p>
+            <p>Kleiderart: {dummyData.clothes1}</p>
+            <p>Krisengebiet: {dummyData.location1}</p>
+          </div>
+        ))}
       </div>
     );
   }
-
-  return (
-    <div>
-      <h2>Registrierungsdaten</h2>
-      <p>Vorname: {props.displayRegistrationData.firstName}</p>
-      <p>Nachname: {props.displayRegistrationData.lastName}</p>
-      <p>Straße: {props.displayRegistrationData.street}</p>
-      <p>Postleitzahl: {props.displayRegistrationData.zip}</p>
-      <p>Wohnort: {props.displayRegistrationData.city}</p>
-
-      <p>Kleiderart: {props.displayRegistrationData.clothes1}</p>
-      <p>Krisengebiet: {props.displayRegistrationData.location1}</p>
-      <p>Kleiderart: {props.displayRegistrationData.clothes2}</p>
-      <p>Krisengebiet: {props.displayRegistrationData.location2}</p>
-    </div>
-  );
 };
 
 export default OutputRegistration;

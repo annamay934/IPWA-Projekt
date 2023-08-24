@@ -30,7 +30,8 @@ const HomePage = () => {
         return response.json();
       })
       .then((data) => {
-        setDummyData(data.results);
+        const dataArray = Object.values(data); // Convert the object values to an array
+        setDummyData(dataArray);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
