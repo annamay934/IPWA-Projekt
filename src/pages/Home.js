@@ -30,8 +30,8 @@ const HomePage = () => {
         return response.json();
       })
       .then((data) => {
-        const dataArray = Object.values(data); // Convert the object values to an array
-        setDummyData(dataArray);
+        //const dataArray = Object.values(data); // Convert the object values to an array
+        setDummyData(data);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
@@ -57,11 +57,11 @@ const HomePage = () => {
           abgeholt werden.
         </p>
       </section>
-      <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
-      <OutputRegistration
+      <RegistrationForm
         displayRegistrationData={registrationData}
-        displayDummyData={dummyData}
+        onSaveRegistrationData={saveRegistrationDataHandler}
       />
+      <OutputRegistration displayDummyData={dummyData} />
       <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
