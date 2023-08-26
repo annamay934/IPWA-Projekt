@@ -16,8 +16,10 @@ const HomePage = () => {
   };
 
   const [dummyData, setDummyData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchRegistrationDataHandler = () => {
+    setIsLoading(true);
     const apiUrl = "https://api.jsonserver.io/UserInputRegistrationForm";
     const headers = new Headers();
     headers.append("X-Jsio-Token", "00b52ae22cb418afbee530f17a161298");
@@ -32,6 +34,7 @@ const HomePage = () => {
       .then((data) => {
         //const dataArray = Object.values(data); // Convert the object values to an array
         setDummyData(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
@@ -57,11 +60,14 @@ const HomePage = () => {
           abgeholt werden.
         </p>
       </section>
-      <RegistrationForm
-        displayRegistrationData={registrationData}
-        onSaveRegistrationData={saveRegistrationDataHandler}
-      />
-      <OutputRegistration displayDummyData={dummyData} />
+      <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
+      {!isLoading && (
+        <OutputRegistration
+          displayDummyData={dummyData}
+          displayRegistrationData={registrationData}
+        />
+      )}
+      {isLoading && <p>Loading...</p>}
       <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
