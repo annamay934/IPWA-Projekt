@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import RegistrationForm from "../components/NewRegistration/RegistrationForm";
 import OutputRegistration from "../components/OutputRegistration/OutputRegistration";
 
 const HomePage = () => {
+  const navigate = useNavigate(); // Hook for navigation
+  const location = useLocation(); // Hook for getting current location
   const [registrationData, setRegistrationData] = useState(null);
 
   const saveRegistrationDataHandler = (enteredRegistrationData) => {
     const registrationData = {
       ...enteredRegistrationData,
-      id: Math.random().toString(),
+      //id: Math.random().toString(),
     };
     console.log(registrationData);
     //props.onAddRegistration(registrationData);
     setRegistrationData(registrationData);
+    // Navigation to the OutputRegistration page after saving the data
+    navigate("/success", {
+      state: {
+        registrationData: registrationData,
+        dummyData: dummyData,
+      },
+    });
   };
 
   const [dummyData, setDummyData] = useState([]);
@@ -61,13 +71,13 @@ const HomePage = () => {
         </p>
       </section>
       <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
-      {!isLoading && (
+      {location.pathname === "/success" && !isLoading && (
         <OutputRegistration
           displayDummyData={dummyData}
           displayRegistrationData={registrationData}
         />
       )}
-      {isLoading && <p>Loading...</p>}
+      {location.pathname === "/success" && isLoading && <p>Loading...</p>}
       <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:

@@ -1,31 +1,32 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
-const OutputRegistration = (props) => {
-  console.log(props);
+const OutputRegistration = () => {
+  const location = useLocation();
+  const state = location.state || {}; // Access the state from the location
 
-  const hasNonEmptyString = (obj) => {
-    return Object.values(obj).some(
-      (value) => typeof value === "string" && value.trim() !== ""
-    );
-  };
+  console.log("Status korrekt", state);
+  console.log("Location State:", location.state);
+  console.log("DummyData:", state.dummyData);
+  console.log("RegistrationData:", state.registrationData);
 
-  console.log(props.displayDummyData);
+  // Check if a value is an empty string
+  const isEmptyString = (value) =>
+    typeof value === "string" && value.trim() === "";
+
+  console.log(
+    "isEmptyString(clothes1):",
+    isEmptyString(state.dummyData.clothes1)
+  );
+  console.log("isEmptyString(location1):", isEmptyString(state.location1));
 
   if (
-    props.displayRegistrationData &&
-    hasNonEmptyString(props.displayRegistrationData)
+    isEmptyString(state.registrationData.clothes1) &&
+    isEmptyString(state.registrationData.location1)
   ) {
-    const {
-      firstName,
-      lastName,
-      street,
-      zip,
-      city,
-      clothes1,
-      location1,
-      clothes2,
-      location2,
-    } = props.displayRegistrationData;
+    console.log("Reached the if block");
+    const { firstName, lastName, street, zip, city, clothes2, location2 } =
+      state.registrationData;
 
     return (
       <div>
@@ -35,40 +36,50 @@ const OutputRegistration = (props) => {
         {street && <p>Straße: {street}</p>}
         {zip && <p>Postleitzahl: {zip}</p>}
         {city && <p>Wohnort: {city}</p>}
-        {clothes1 && <p>Kleiderart: {clothes1}</p>}
         {clothes2 && <p>Kleiderart: {clothes2}</p>}
-        {location1 && <p>Krisengebiet: {location1}</p>}
         {location2 && <p>Krisengebiet: {location2}</p>}
+      </div>
+    );
+  } else if (
+    isEmptyString(state.registrationData.firstName) &&
+    isEmptyString(state.registrationData.lastName) &&
+    isEmptyString(state.registrationData.street) &&
+    isEmptyString(state.registrationData.zip) &&
+    isEmptyString(state.registrationData.city) &&
+    isEmptyString(state.registrationData.clothes2) &&
+    isEmptyString(state.registrationData.location2)
+  ) {
+    console.log("Reached the else if 1 block");
+    const { clothes1, location1 } = state.registrationData;
+
+    return (
+      <div>
+        <h2>Registrierungsdaten</h2>
+        {clothes1 && <p>Kleiderart: {clothes1}</p>}
+        {location1 && <p>Krisengebiet: {location1}</p>}
+      </div>
+    );
+  } else if (isEmptyString(state.registrationData)) {
+    console.log("Reached the else if 2 block");
+    console.log("Dummy Data:", state.dummyData);
+    return (
+      <div>
+        <h2>Registrierungsdaten</h2>
+        <div>
+          <p>Vorname: {state.dummyData.firstName}</p>
+          <p>Nachname: {state.dummyData.lastName}</p>
+          <p>Straße: {state.dummyData.street}</p>
+          <p>Postleitzahl: {state.dummyData.zip}</p>
+          <p>Wohnort: {state.dummyData.city}</p>
+          <p>Kleiderart: {state.dummyData.clothes1}</p>
+          <p>Krisengebiet: {state.dummyData.location1}</p>
+        </div>
       </div>
     );
   } else {
     return (
       <div>
-        <h2>Registrierungsdaten</h2>
-        <div>
-          <p>Vorname: {props.displayDummyData.firstName}</p>
-          <p>Nachname: {props.displayDummyData.lastName}</p>
-          <p>Straße: {props.displayDummyData.street}</p>
-          <p>Postleitzahl: {props.displayDummyData.zip}</p>
-          <p>Wohnort: {props.displayDummyData.city}</p>
-          <p>Kleiderart: {props.displayDummyData.clothes1}</p>
-          <p>Krisengebiet: {props.displayDummyData.location1}</p>
-        </div>
-
-        {/* <h2>Registrierungsdaten</h2>
-            {props.displayDummyData.length > 0 ? (
-          <div>
-            {props.displayDummyData[0] && <p>{props.displayDummyData[1]}</p>}
-            {props.displayDummyData[1] && <p>{props.displayDummyData[1]}</p>}
-            {props.displayDummyData[2] && <p>{props.displayDummyData[2]}</p>}
-            {props.displayDummyData[3] && <p>{props.displayDummyData[3]}</p>}
-            {props.displayDummyData[4] && <p>{props.displayDummyData[4]}</p>}
-            {props.displayDummyData[5] && <p>{props.displayDummyData[5]}</p>}
-            {props.displayDummyData[6] && <p>{props.displayDummyData[6]}</p>}
-          </div>
-        ) : (
-          <p>Keine Dummy-Daten vorhanden</p>
-        )} */}
+        <p>No data given</p>
       </div>
     );
   }
