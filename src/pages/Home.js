@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import RegistrationForm from "../components/NewRegistration/RegistrationForm";
 import OutputRegistration from "../components/OutputRegistration/OutputRegistration";
@@ -28,7 +28,7 @@ const HomePage = () => {
   const [dummyData, setDummyData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchRegistrationDataHandler = () => {
+  const fetchRegistrationDataHandler = useCallback(() => {
     setIsLoading(true);
     const apiUrl = "https://api.jsonserver.io/UserInputRegistrationForm";
     const headers = new Headers();
@@ -49,11 +49,11 @@ const HomePage = () => {
       .catch((error) => {
         console.error("Fetch error:", error);
       });
-  };
+  }, []);
 
   useEffect(() => {
     fetchRegistrationDataHandler();
-  }, []);
+  }, [fetchRegistrationDataHandler]);
 
   console.log(dummyData);
 
@@ -69,7 +69,12 @@ const HomePage = () => {
           Vereins persönlich übergeben werden oder von einem Sammelfahrzeug
           abgeholt werden.
         </p>
+
+        <p>
+          Bitte wählen Sie die gewünschte Option aus und machen ihre Angaben.{" "}
+        </p>
       </section>
+
       <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
       {location.pathname === "/success" && !isLoading && (
         <OutputRegistration

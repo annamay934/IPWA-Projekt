@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const RegistrationForm = (props) => {
   //wenn 1. Formular ausgewählt wird, verschwindet das zweite für den Homepage Besucher
@@ -25,6 +26,39 @@ const RegistrationForm = (props) => {
 
   const dropdownLocation1ChangeHandler = (event) => {
     setEnteredLocation1(event.target.value);
+  };
+
+  //mit einer ersten Validierung den Vornamen prüfen
+  const [enteredClothes1Touched, setEnteredClothes1Touched] = useState(false);
+  const [enteredLocation1Touched, setEnteredLocation1Touched] = useState(false);
+
+  //enteredClothes1Valid ist valide, wenn enteredClothes1 nicht leer ist
+  const enteredClothes1IsValid = enteredClothes1.trim() !== "";
+  const enteredLocation1IsValid = enteredLocation1.trim() !== "";
+
+  //hat der User das Feld berührt/reingeklickt
+  const clothes1InputIsInvalid =
+    !enteredClothes1IsValid && enteredClothes1Touched;
+
+  const location1InputIsInvalid =
+    !enteredLocation1IsValid && enteredLocation1Touched;
+
+  //Variable für Validierung Form1 erstellen
+  let formIsValid1 = false;
+
+  //Form1 Validation state change, depends on different user inputs
+  if (enteredClothes1IsValid && enteredLocation1IsValid) {
+    formIsValid1 = true;
+  }
+
+  //BlurHandler for firstName, User tips in field writes and cancel
+  const clothes1InputBlurHandler = (event) => {
+    setEnteredClothes1Touched(true);
+  };
+
+  //BlurHandler for location1, User tips in field writes and cancel
+  const location1InputBlurHandler = (event) => {
+    setEnteredLocation1Touched(true);
   };
 
   /* Zustand der Eingabefelder im 2. Formular, 
@@ -65,9 +99,151 @@ const RegistrationForm = (props) => {
     setEnteredLocation2(event.target.value);
   };
 
+  //mit einer ersten Validierung den Vornamen prüfen
+  const [enteredFirstNameTouched, setEnteredFirstNameTouched] = useState(false);
+  const [enteredLastNameTouched, setEnteredLastNameTouched] = useState(false);
+  const [enteredStreetTouched, setEnteredStreetTouched] = useState(false);
+  const [enteredZipTouched, setEnteredZipTouched] = useState(false);
+  const [enteredCityTouched, setEnteredCityTouched] = useState(false);
+  const [enteredClothes2Touched, setEnteredClothes2Touched] = useState(false);
+  const [enteredLocation2Touched, setEnteredLocation2Touched] = useState(false);
+
+  //enteredFirstNameIsValid ist valide, wenn enteredFirstName nicht leer ist
+  const enteredFirstNameIsValid = enteredFirstName.trim() !== "";
+  const enteredLastNameIsValid = enteredLastName.trim() !== "";
+  const enteredStreetIsValid = enteredStreet.trim() !== "";
+  const enteredZipIsValid = enteredZip.trim() !== "";
+  const enteredCityIsValid = enteredCity.trim() !== "";
+  const enteredClothes2IsValid = enteredClothes2.trim() !== "";
+  const enteredLocation2IsValid = enteredLocation2.trim() !== "";
+
+  //hat der User das Feld berührt/reingeklickt
+  const firstNameInputIsInvalid =
+    !enteredFirstNameIsValid && enteredFirstNameTouched;
+
+  const lastNameInputIsInvalid =
+    !enteredLastNameIsValid && enteredLastNameTouched;
+
+  const streetInputIsInvalid = !enteredStreetIsValid && enteredStreetTouched;
+
+  const zipInputIsInvalid = !enteredZipIsValid && enteredZipTouched;
+
+  const cityInputIsInvalid = !enteredCityIsValid && enteredCityTouched;
+
+  const clothes2InputIsInvalid =
+    !enteredClothes2IsValid && enteredClothes2Touched;
+
+  const location2InputIsInvalid =
+    !enteredLocation2IsValid && enteredLocation2Touched;
+
+  //Variable für Validierung Form2 erstellen
+  let formIsValid2 = false;
+
+  //Form2 Validation state change, depends on different user inputs
+  if (
+    enteredFirstNameIsValid &&
+    enteredLastNameIsValid &&
+    enteredStreetIsValid &&
+    enteredZipIsValid &&
+    enteredCityIsValid &&
+    enteredClothes2IsValid &&
+    enteredLocation2IsValid
+  ) {
+    formIsValid2 = true;
+  }
+
+  //BlurHandler for firstName, User tips in field writes and cancel
+  const firstNameInputBlurHandler = (event) => {
+    setEnteredFirstNameTouched(true);
+  };
+
+  //BlurHandler for lastName, User tips in field writes and cancel
+  const lastNameInputBlurHandler = (event) => {
+    setEnteredLastNameTouched(true);
+  };
+
+  //BlurHandler for lastName, User tips in field writes and cancel
+  const streetInputBlurHandler = (event) => {
+    setEnteredStreetTouched(true);
+  };
+
+  //BlurHandler for lastName, User tips in field writes and cancel
+  const zipInputBlurHandler = (event) => {
+    setEnteredZipTouched(true);
+  };
+
+  //BlurHandler for lastName, User tips in field writes and cancel
+  const cityInputBlurHandler = (event) => {
+    setEnteredCityTouched(true);
+  };
+
+  //BlurHandler for lastName, User tips in field writes and cancel
+  const clothes2InputBlurHandler = (event) => {
+    setEnteredClothes2Touched(true);
+  };
+
+  //BlurHandler for location2, User tips in field writes and cancel
+  const location2InputBlurHandler = (event) => {
+    setEnteredLocation2Touched(true);
+  };
+
   //Unterdrücken des vollständigen Ladens der Homepage
   const submitHandler = (event) => {
     event.preventDefault();
+
+    //Form1
+    setEnteredClothes1Touched(true);
+    setEnteredLocation1Touched(true);
+
+    //Form2
+    setEnteredFirstNameTouched(true);
+    setEnteredLastNameTouched(true);
+    setEnteredStreetTouched(true);
+    setEnteredZipTouched(true);
+    setEnteredCityTouched(true);
+    setEnteredClothes2Touched(true);
+    setEnteredLocation2Touched(true);
+
+    //if enteredFirstName is not valid, cancel submit
+    if (
+      !enteredClothes1IsValid &&
+      !enteredLocation1IsValid &&
+      !enteredFirstNameIsValid &&
+      !enteredLastNameIsValid &&
+      !enteredStreetIsValid &&
+      !enteredZipIsValid &&
+      !enteredCityIsValid &&
+      !enteredClothes2IsValid &&
+      !enteredLocation2IsValid
+    ) {
+      return;
+    }
+
+    //From1
+    setEnteredClothes1("");
+    setEnteredLocation1("");
+
+    //Form2
+    setEnteredFirstName("");
+    setEnteredLastName("");
+    setEnteredStreet("");
+    setEnteredZip("");
+    setEnteredCity("");
+    setEnteredClothes2("");
+    setEnteredLocation2("");
+
+    //Form1
+    setEnteredClothes1Touched(false);
+    setEnteredLocation1Touched(false);
+
+    //Form2
+    setEnteredFirstNameTouched(false);
+    setEnteredLastNameTouched(false);
+    setEnteredStreetTouched(false);
+    setEnteredZipTouched(false);
+    setEnteredCityTouched(false);
+    setEnteredClothes2Touched(false);
+    setEnteredLocation2Touched(false);
 
     //Eingabedaten dem Objekt registrationData übergeben
     const registrationData = {
@@ -93,11 +269,32 @@ const RegistrationForm = (props) => {
     setEnteredCity("");
     setEnteredClothes2("");
     setEnteredLocation2("");
+
+    console.log(formIsValid1);
+    console.log(formIsValid2);
   };
 
+  //invalid Aussehen hinzufügen für die Felder, https://react-bootstrap.netlify.app/docs/forms/overview/ 30.08.2023
+  //Form1
+  const form1InputClasses =
+    clothes1InputIsInvalid || location1InputIsInvalid
+      ? "form-group invalid"
+      : "form-group";
+
+  const form2InputClasses =
+    firstNameInputIsInvalid ||
+    lastNameInputIsInvalid ||
+    streetInputIsInvalid ||
+    zipInputIsInvalid ||
+    cityInputIsInvalid ||
+    clothes2InputIsInvalid ||
+    location2InputIsInvalid
+      ? "form-group invalid"
+      : "form-group";
+
   return (
-    <form onSubmit={submitHandler}>
-      <div className="form-group">
+    <Form onSubmit={submitHandler}>
+      <Form.Group>
         <strong>
           <Button
             type="button"
@@ -108,14 +305,14 @@ const RegistrationForm = (props) => {
           </Button>
         </strong>
         {showForm1 && !showForm2 && (
-          <div id="formContainer1">
-            <label htmlFor="AbgabeOrt">
+          <Form.Group id="formContainer1" className={form1InputClasses}>
+            <Form.Label htmlFor="AbgabeOrt">
               Gemeinnütziger Verein e. V., Mustermannstraße 1, in 12345
               Mustermannstadt
-            </label>
-            <div className="form-group">
-              <label htmlFor="clothes1">Kleiderart:</label>
-              <input
+            </Form.Label>
+            <Form.Group>
+              <Form.Label htmlFor="clothes1">Kleiderart</Form.Label>
+              <Form.Control
                 type="text"
                 className="form-control text-center"
                 id="clothes1"
@@ -123,10 +320,14 @@ const RegistrationForm = (props) => {
                 value={enteredClothes1}
                 onChange={clothes1ChangeHandler}
                 placeholder="Hemd, T-Shirt, Hose"
+                onBlur={clothes1InputBlurHandler}
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="location1">Krisengebiet:</label>
+              {clothes1InputIsInvalid && (
+                <p className="error-text">Kleiderart bitte angeben</p>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="location1">Krisengebiet</Form.Label>
               <select
                 type="text"
                 className="form-control text-center"
@@ -134,6 +335,7 @@ const RegistrationForm = (props) => {
                 name="Krisengebiet1"
                 value={enteredLocation1}
                 onChange={dropdownLocation1ChangeHandler}
+                onBlur={location1InputBlurHandler}
               >
                 <option value="Bitte auswählen">Bitte auswählen</option>
                 <option value="Libyen">Libyen</option>
@@ -142,11 +344,17 @@ const RegistrationForm = (props) => {
                 <option value="Zentralafrika">Zentralafrika</option>
                 <option value="Sierra Leone">Sierra Leone</option>
               </select>
-            </div>
-          </div>
+              {location1InputIsInvalid && (
+                <p className="error-text">Krisengebiet bitte angeben</p>
+              )}
+              <Form.Text className="text-muted">
+                We will never share your infos with anyone.
+              </Form.Text>
+            </Form.Group>
+          </Form.Group>
         )}
-        <div />
-        <div className="form-group">
+
+        <Form.Group className={form2InputClasses}>
           <strong>
             <Button
               type="button"
@@ -157,10 +365,10 @@ const RegistrationForm = (props) => {
             </Button>
           </strong>
           {showForm2 && !showForm1 && (
-            <div id="formContainer">
-              <div className="form-group">
-                <label htmlFor="firstName">Vorname:</label>
-                <input
+            <Form.Group id="formContainer">
+              <Form.Group>
+                <Form.Label htmlFor="firstName">Vorname</Form.Label>
+                <Form.Control
                   id="firstName"
                   className="form-control text-center"
                   type="text"
@@ -168,11 +376,15 @@ const RegistrationForm = (props) => {
                   placeholder="Maximilian"
                   value={enteredFirstName}
                   onChange={firstNameChangeHandler}
+                  onBlur={firstNameInputBlurHandler}
                 />
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastName">Nachname:</label>
-                <input
+                {firstNameInputIsInvalid && (
+                  <p className="error-text">Vorname bitte angeben</p>
+                )}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="lastName">Nachname</Form.Label>
+                <Form.Control
                   id="lastName"
                   className="form-control text-center"
                   type="text"
@@ -180,11 +392,15 @@ const RegistrationForm = (props) => {
                   placeholder="Mustermann"
                   value={enteredLastName}
                   onChange={lastNameChangeHandler}
+                  onBlur={lastNameInputBlurHandler}
                 />
-              </div>
-              <div className="form-group">
-                <label htmlFor="street">Straße mit Hausnummer:</label>
-                <input
+                {lastNameInputIsInvalid && (
+                  <p className="error-text">Nachname bitte angeben</p>
+                )}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="street">Straße mit Hausnummer</Form.Label>
+                <Form.Control
                   id="street"
                   className="form-control text-center"
                   type="text"
@@ -192,11 +408,15 @@ const RegistrationForm = (props) => {
                   placeholder="Mustermannstraße 3"
                   value={enteredStreet}
                   onChange={streetChangeHandler}
+                  onBlur={streetInputBlurHandler}
                 />
-              </div>
-              <div className="form-group">
-                <label htmlFor="zip">Postleitzahl:</label>
-                <input
+                {streetInputIsInvalid && (
+                  <p className="error-text">Straße bitte angeben</p>
+                )}
+              </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="zip">Postleitzahl</Form.Label>
+                <Form.Control
                   id="zip"
                   className="form-control text-center"
                   type="text"
@@ -204,12 +424,16 @@ const RegistrationForm = (props) => {
                   placeholder="12345"
                   value={enteredZip}
                   onChange={zipChangeHandler}
+                  onBlur={zipInputBlurHandler}
                 />
-              </div>
+                {zipInputIsInvalid && (
+                  <p className="error-text">Postleitzahl bitte angeben</p>
+                )}
+              </Form.Group>
 
-              <div className="form-group">
-                <label htmlFor="city">Wohnort:</label>
-                <input
+              <Form.Group>
+                <Form.Label htmlFor="city">Wohnort</Form.Label>
+                <Form.Control
                   id="city"
                   className="form-control text-center"
                   type="text"
@@ -217,12 +441,16 @@ const RegistrationForm = (props) => {
                   placeholder="Mustermannstadt"
                   value={enteredCity}
                   onChange={cityChangeHandler}
+                  onBlur={cityInputBlurHandler}
                 />
-              </div>
+                {cityInputIsInvalid && (
+                  <p className="error-text">Wohnort bitte angeben</p>
+                )}
+              </Form.Group>
 
-              <div className="form-group">
-                <label htmlFor="clothes2">Kleiderart:</label>
-                <input
+              <Form.Group>
+                <Form.Label htmlFor="clothes2">Kleiderart</Form.Label>
+                <Form.Control
                   id="clothes2"
                   className="form-control text-center"
                   type="text"
@@ -230,11 +458,15 @@ const RegistrationForm = (props) => {
                   placeholder="Hemd, T-Shirt, Hose, Socken"
                   value={enteredClothes2}
                   onChange={clothes2ChangeHandler}
+                  onBlur={clothes2InputBlurHandler}
                 />
-              </div>
+                {clothes2InputIsInvalid && (
+                  <p className="error-text">Kleiderart bitte angeben</p>
+                )}
+              </Form.Group>
 
-              <div className="form-group">
-                <label htmlFor="location2">Krisengebiet:</label>
+              <Form.Group>
+                <Form.Label htmlFor="location2">Krisengebiet</Form.Label>
                 <select
                   id="location2"
                   className="form-control text-center"
@@ -242,6 +474,7 @@ const RegistrationForm = (props) => {
                   name="Krisengebiet2"
                   value={enteredLocation2}
                   onChange={dropdownLocation2ChangeHandler}
+                  onBlur={location2InputBlurHandler}
                 >
                   <option value="Bitte auswählen">Bitte auswählen</option>
                   <option value="Libyen">Libyen</option>
@@ -250,15 +483,27 @@ const RegistrationForm = (props) => {
                   <option value="Zentralafrika">Zentralafrika</option>
                   <option value="Sierra Leone">Sierra Leone</option>
                 </select>
-              </div>
-            </div>
+                {location2InputIsInvalid && (
+                  <p className="error-text">Krisengebiet bitte angeben</p>
+                )}
+                <Form.Text className="text-muted">
+                  We will never share your infos with anyone.
+                </Form.Text>
+              </Form.Group>
+            </Form.Group>
           )}
-        </div>
+        </Form.Group>
         {(showForm1 || showForm2) && (
-          <Button type="submit">Registrieren</Button>
+          <Button
+            variant="primary"
+            type="submit"
+            disabled={!formIsValid1 && !formIsValid2}
+          >
+            Registrieren
+          </Button>
         )}
-      </div>
-    </form>
+      </Form.Group>
+    </Form>
   );
 };
 

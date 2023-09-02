@@ -21,6 +21,13 @@ const OutputRegistration = () => {
   console.log("isEmptyString(location1):", isEmptyString(state.location1));
 
   if (
+    !isEmptyString(state.registrationData.firstName) &&
+    !isEmptyString(state.registrationData.lastName) &&
+    !isEmptyString(state.registrationData.street) &&
+    !isEmptyString(state.registrationData.zip) &&
+    !isEmptyString(state.registrationData.city) &&
+    !isEmptyString(state.registrationData.clothes2) &&
+    !isEmptyString(state.registrationData.location2) &&
     isEmptyString(state.registrationData.clothes1) &&
     isEmptyString(state.registrationData.location1)
   ) {
@@ -47,9 +54,11 @@ const OutputRegistration = () => {
     isEmptyString(state.registrationData.zip) &&
     isEmptyString(state.registrationData.city) &&
     isEmptyString(state.registrationData.clothes2) &&
-    isEmptyString(state.registrationData.location2)
+    isEmptyString(state.registrationData.location2) &&
+    !isEmptyString(state.registrationData.clothes1) &&
+    !isEmptyString(state.registrationData.location1)
   ) {
-    console.log("Reached the else if 1 block");
+    console.log("Reached the else if block");
     const { clothes1, location1 } = state.registrationData;
 
     return (
@@ -59,12 +68,13 @@ const OutputRegistration = () => {
         {location1 && <p>Krisengebiet: {location1}</p>}
       </div>
     );
-  } else if (isEmptyString(state.registrationData)) {
-    console.log("Reached the else if 2 block");
+  } else {
+    console.log("Reached the else block");
     console.log("Dummy Data:", state.dummyData);
+
     return (
       <div>
-        <h2>Registrierungsdaten</h2>
+        <h2>Example Data shown</h2>
         <div>
           <p>Vorname: {state.dummyData.firstName}</p>
           <p>Nachname: {state.dummyData.lastName}</p>
@@ -74,12 +84,6 @@ const OutputRegistration = () => {
           <p>Kleiderart: {state.dummyData.clothes1}</p>
           <p>Krisengebiet: {state.dummyData.location1}</p>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>No data given</p>
       </div>
     );
   }
