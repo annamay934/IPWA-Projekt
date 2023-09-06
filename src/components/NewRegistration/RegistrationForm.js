@@ -108,11 +108,18 @@ const RegistrationForm = (props) => {
   const [enteredClothes2Touched, setEnteredClothes2Touched] = useState(false);
   const [enteredLocation2Touched, setEnteredLocation2Touched] = useState(false);
 
+  // Überprüfung, ob die Abholadresse in der Nähe der Geschäftsstelle liegt
+  var businessZip = "12345"; // Postleitzahl der Geschäftsstelle
+  var enteredZipReduced = enteredZip.substring(0, 2); // Erste beiden Stellen der eingegebenen Postleitzahl
+  var businessZipReduced = businessZip.substring(0, 2); // Erste beiden Stellen der Geschäftsstellen-Postleitzahl
+
+  var enteredZipNearBusiness = enteredZipReduced === businessZipReduced;
+
   //enteredFirstNameIsValid ist valide, wenn enteredFirstName nicht leer ist
   const enteredFirstNameIsValid = enteredFirstName.trim() !== "";
   const enteredLastNameIsValid = enteredLastName.trim() !== "";
   const enteredStreetIsValid = enteredStreet.trim() !== "";
-  const enteredZipIsValid = enteredZip.trim() !== "";
+  const enteredZipIsValid = enteredZip.trim() !== "" && enteredZipNearBusiness;
   const enteredCityIsValid = enteredCity.trim() !== "";
   const enteredClothes2IsValid = enteredClothes2.trim() !== "";
   const enteredLocation2IsValid = enteredLocation2.trim() !== "";
@@ -281,6 +288,7 @@ const RegistrationForm = (props) => {
       ? "form-group invalid"
       : "form-group";
 
+  //Form2
   const form2InputClasses =
     firstNameInputIsInvalid ||
     lastNameInputIsInvalid ||
@@ -294,18 +302,19 @@ const RegistrationForm = (props) => {
 
   return (
     <Form onSubmit={submitHandler}>
-      <Form.Group>
+      <Form.Group className="form-group">
         <strong>
           <Button
             type="button"
             onClick={toggleForm1}
             variant="outline-secondary"
           >
-            Übergabe an der Geschäftsstelle
+            Übergabe an der Geschäftsstelle/Tabletregistrierung
           </Button>
         </strong>
+
         {showForm1 && !showForm2 && (
-          <Form.Group id="formContainer1" className={form1InputClasses}>
+          <Form.Group className={form1InputClasses}>
             <Form.Label htmlFor="AbgabeOrt">
               Gemeinnütziger Verein e. V., Mustermannstraße 1, in 12345
               Mustermannstadt
@@ -348,159 +357,163 @@ const RegistrationForm = (props) => {
                 <p className="error-text">Krisengebiet bitte angeben</p>
               )}
               <Form.Text className="text-muted">
-                We will never share your infos with anyone.
+                Wir teilen ihre Daten nicht mit Dritten.
               </Form.Text>
             </Form.Group>
           </Form.Group>
         )}
 
-        <Form.Group className={form2InputClasses}>
-          <strong>
-            <Button
-              type="button"
-              onClick={toggleForm2}
-              variant="outline-secondary"
-            >
-              Abholung
-            </Button>
-          </strong>
-          {showForm2 && !showForm1 && (
-            <Form.Group id="formContainer">
-              <Form.Group>
-                <Form.Label htmlFor="firstName">Vorname</Form.Label>
-                <Form.Control
-                  id="firstName"
-                  className="form-control text-center"
-                  type="text"
-                  name="Vorname"
-                  placeholder="Maximilian"
-                  value={enteredFirstName}
-                  onChange={firstNameChangeHandler}
-                  onBlur={firstNameInputBlurHandler}
-                />
-                {firstNameInputIsInvalid && (
-                  <p className="error-text">Vorname bitte angeben</p>
-                )}
-              </Form.Group>
-              <Form.Group>
-                <Form.Label htmlFor="lastName">Nachname</Form.Label>
-                <Form.Control
-                  id="lastName"
-                  className="form-control text-center"
-                  type="text"
-                  name="Nachname"
-                  placeholder="Mustermann"
-                  value={enteredLastName}
-                  onChange={lastNameChangeHandler}
-                  onBlur={lastNameInputBlurHandler}
-                />
-                {lastNameInputIsInvalid && (
-                  <p className="error-text">Nachname bitte angeben</p>
-                )}
-              </Form.Group>
-              <Form.Group>
-                <Form.Label htmlFor="street">Straße mit Hausnummer</Form.Label>
-                <Form.Control
-                  id="street"
-                  className="form-control text-center"
-                  type="text"
-                  name="Straße"
-                  placeholder="Mustermannstraße 3"
-                  value={enteredStreet}
-                  onChange={streetChangeHandler}
-                  onBlur={streetInputBlurHandler}
-                />
-                {streetInputIsInvalid && (
-                  <p className="error-text">Straße bitte angeben</p>
-                )}
-              </Form.Group>
-              <Form.Group>
-                <Form.Label htmlFor="zip">Postleitzahl</Form.Label>
-                <Form.Control
-                  id="zip"
-                  className="form-control text-center"
-                  type="text"
-                  name="Postleitzahl"
-                  placeholder="12345"
-                  value={enteredZip}
-                  onChange={zipChangeHandler}
-                  onBlur={zipInputBlurHandler}
-                />
-                {zipInputIsInvalid && (
-                  <p className="error-text">Postleitzahl bitte angeben</p>
-                )}
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label htmlFor="city">Wohnort</Form.Label>
-                <Form.Control
-                  id="city"
-                  className="form-control text-center"
-                  type="text"
-                  name="Wohnort"
-                  placeholder="Mustermannstadt"
-                  value={enteredCity}
-                  onChange={cityChangeHandler}
-                  onBlur={cityInputBlurHandler}
-                />
-                {cityInputIsInvalid && (
-                  <p className="error-text">Wohnort bitte angeben</p>
-                )}
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label htmlFor="clothes2">Kleiderart</Form.Label>
-                <Form.Control
-                  id="clothes2"
-                  className="form-control text-center"
-                  type="text"
-                  name="Kleiderart2"
-                  placeholder="Hemd, T-Shirt, Hose, Socken"
-                  value={enteredClothes2}
-                  onChange={clothes2ChangeHandler}
-                  onBlur={clothes2InputBlurHandler}
-                />
-                {clothes2InputIsInvalid && (
-                  <p className="error-text">Kleiderart bitte angeben</p>
-                )}
-              </Form.Group>
-
-              <Form.Group>
-                <Form.Label htmlFor="location2">Krisengebiet</Form.Label>
-                <select
-                  id="location2"
-                  className="form-control text-center"
-                  type="text"
-                  name="Krisengebiet2"
-                  value={enteredLocation2}
-                  onChange={dropdownLocation2ChangeHandler}
-                  onBlur={location2InputBlurHandler}
-                >
-                  <option value="Bitte auswählen">Bitte auswählen</option>
-                  <option value="Libyen">Libyen</option>
-                  <option value="Somalia">Somalia</option>
-                  <option value="Süd Sudan">Süd Sudan</option>
-                  <option value="Zentralafrika">Zentralafrika</option>
-                  <option value="Sierra Leone">Sierra Leone</option>
-                </select>
-                {location2InputIsInvalid && (
-                  <p className="error-text">Krisengebiet bitte angeben</p>
-                )}
-                <Form.Text className="text-muted">
-                  We will never share your infos with anyone.
-                </Form.Text>
-              </Form.Group>
-            </Form.Group>
-          )}
-        </Form.Group>
-        {(showForm1 || showForm2) && (
+        <strong>
           <Button
-            variant="primary"
-            type="submit"
-            disabled={!formIsValid1 && !formIsValid2}
+            type="button"
+            onClick={toggleForm2}
+            variant="outline-secondary"
           >
-            Registrieren
+            Abholung bei Ihnen zu Hause
           </Button>
+        </strong>
+        {showForm2 && !showForm1 && (
+          <Form.Group className={form2InputClasses}>
+            <Form.Group>
+              <Form.Label htmlFor="firstName">Vorname</Form.Label>
+              <Form.Control
+                id="firstName"
+                className="form-control text-center"
+                type="text"
+                name="Vorname"
+                placeholder="Maximilian"
+                value={enteredFirstName}
+                onChange={firstNameChangeHandler}
+                onBlur={firstNameInputBlurHandler}
+              />
+              {firstNameInputIsInvalid && (
+                <p className="error-text">Vorname bitte angeben</p>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="lastName">Nachname</Form.Label>
+              <Form.Control
+                id="lastName"
+                className="form-control text-center"
+                type="text"
+                name="Nachname"
+                placeholder="Mustermann"
+                value={enteredLastName}
+                onChange={lastNameChangeHandler}
+                onBlur={lastNameInputBlurHandler}
+              />
+              {lastNameInputIsInvalid && (
+                <p className="error-text">Nachname bitte angeben</p>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="street">Straße mit Hausnummer</Form.Label>
+              <Form.Control
+                id="street"
+                className="form-control text-center"
+                type="text"
+                name="Straße"
+                placeholder="Mustermannstraße 3"
+                value={enteredStreet}
+                onChange={streetChangeHandler}
+                onBlur={streetInputBlurHandler}
+              />
+              {streetInputIsInvalid && (
+                <p className="error-text">Straße bitte angeben</p>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="zip">Postleitzahl</Form.Label>
+              <Form.Control
+                id="zip"
+                className="form-control text-center"
+                type="text"
+                name="Postleitzahl"
+                placeholder="12345"
+                value={enteredZip}
+                onChange={zipChangeHandler}
+                onBlur={zipInputBlurHandler}
+              />
+              {zipInputIsInvalid && (
+                <p className="error-text">
+                  Ihre Adresse ist zu weit von unserer Geschäftsstelle entfernt.
+                  Ihre Postleitzahl muss mit 12 beginnen.
+                </p>
+              )}
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label htmlFor="city">Wohnort</Form.Label>
+              <Form.Control
+                id="city"
+                className="form-control text-center"
+                type="text"
+                name="Wohnort"
+                placeholder="Mustermannstadt"
+                value={enteredCity}
+                onChange={cityChangeHandler}
+                onBlur={cityInputBlurHandler}
+              />
+              {cityInputIsInvalid && (
+                <p className="error-text">Wohnort bitte angeben</p>
+              )}
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label htmlFor="clothes2">Kleiderart</Form.Label>
+              <Form.Control
+                id="clothes2"
+                className="form-control text-center"
+                type="text"
+                name="Kleiderart2"
+                placeholder="Hemd, T-Shirt, Hose, Socken"
+                value={enteredClothes2}
+                onChange={clothes2ChangeHandler}
+                onBlur={clothes2InputBlurHandler}
+              />
+              {clothes2InputIsInvalid && (
+                <p className="error-text">Kleiderart bitte angeben</p>
+              )}
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label htmlFor="location2">Krisengebiet</Form.Label>
+              <select
+                id="location2"
+                className="form-control text-center"
+                type="text"
+                name="Krisengebiet2"
+                value={enteredLocation2}
+                onChange={dropdownLocation2ChangeHandler}
+                onBlur={location2InputBlurHandler}
+              >
+                <option value="Bitte auswählen">Bitte auswählen</option>
+                <option value="Libyen">Libyen</option>
+                <option value="Somalia">Somalia</option>
+                <option value="Süd Sudan">Süd Sudan</option>
+                <option value="Zentralafrika">Zentralafrika</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+              </select>
+              {location2InputIsInvalid && (
+                <p className="error-text">Krisengebiet bitte angeben</p>
+              )}
+              <Form.Text className="text-muted">
+                Wir teilen ihre Daten nicht mit Dritten.
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group>
+              {(showForm1 || showForm2) && (
+                <Button
+                  variant="primary"
+                  type="submit"
+                  disabled={!formIsValid1 && !formIsValid2}
+                >
+                  Registrieren
+                </Button>
+              )}
+            </Form.Group>
+          </Form.Group>
         )}
       </Form.Group>
     </Form>

@@ -8,12 +8,13 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="navbar">
       <Container>
+        <img className="img" src={dresses} alt="Kleider Bild" />
         <Link to="/" className="navbar-brand">
           Kleiderspendenannahme
         </Link>
-        <img className="img" width="50" src={dresses} alt="Kleider Bild" />
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -23,16 +24,26 @@ const Navigation = () => {
             <Link to="/contact" className="nav-link">
               Kontakt
             </Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="https://www.instagram.com/Kleiderspenden">
+            <NavDropdown title="Mehr" id="basic-nav-dropdown">
+              <NavDropdown.Item
+                href="https://www.instagram.com/Kleiderspenden"
+                className="nav-link"
+              >
                 Instagram
               </NavDropdown.Item>
-              <NavDropdown.Item href="https://www.facebook.com/Kleiderspenden">
+              <NavDropdown.Item
+                href="https://www.facebook.com/Kleiderspenden"
+                className="nav-link"
+              >
                 Facebook
               </NavDropdown.Item>
-              <Link to="/services">Unsere Leistungen</Link>
+              <Link to="/services" className="nav-link">
+                Unsere Leistungen
+              </Link>
               <NavDropdown.Divider />
-              <Link to="/aboutus">Über uns</Link>
+              <Link to="/aboutus" className="nav-link">
+                Über uns
+              </Link>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

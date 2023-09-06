@@ -2,45 +2,36 @@ function ContactPage() {
   return (
     <div>
       <body>
-        <section>
-          <h1 className="custom-h1">
-            Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
-          </h1>
-          <p>
-            Gerne unterstützen wir Sie dabei, Ihren Beitrag zum Klimawandel zu
-            leisten. Die Klamotten können entweder an der Geschäftsstelle des
-            Vereins persönlich übergeben werden oder von einem Sammelfahrzeug
-            abgeholt werden.
-          </p>
-        </section>
+        <h1 className="custom-h1">
+          Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
+        </h1>
+        <p>
+          Gerne unterstützen wir Sie dabei, Ihren Beitrag zum Klimawandel zu
+          leisten. Die Klamotten können entweder an der Geschäftsstelle des
+          Vereins persönlich übergeben werden oder von einem Sammelfahrzeug
+          abgeholt werden.
+        </p>
 
-        <div className="background-image">
-          <h1 className="custom-h1">Kontaktdaten</h1>
-        </div>
-        <div id="page" className="container" style={{ textAlign: "center" }}>
-          <div className="row">
-            <div className="col-md-6 col-md-offset-3 mx-auto text-center">
-              <div className="form-group">
-                <table>
-                  <thead></thead>
-                  <tbody>
-                    <tr>
-                      <td>Gemeinnütziger Verein e. V.</td>
-                    </tr>
-                    <tr>
-                      <td>Mustermannstraße 1</td>
-                    </tr>
-                    <tr>
-                      <td>12345 Mustermannstadt</td>
-                    </tr>
-                    <tr>
-                      <td>Deutschland</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+        <div bordered hover className="table-container">
+          <table>
+            <thead>
+              <h1 className="custom-h1">Kontaktdaten</h1>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gemeinnütziger Verein e. V.</td>
+              </tr>
+              <tr>
+                <td>Mustermannstraße 1</td>
+              </tr>
+              <tr>
+                <td>12345 Mustermannstadt</td>
+              </tr>
+              <tr>
+                <td>Deutschland</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <section>

@@ -13,28 +13,18 @@ const HomePage = () => {
       ...enteredRegistrationData,
       //id: Math.random().toString(),
     };
-    console.log(registrationData);
-    //props.onAddRegistration(registrationData);
-    setRegistrationData(registrationData);
-    // Navigation to the OutputRegistration page after saving the data
-    navigate("/success", {
-      state: {
-        registrationData: registrationData,
-        dummyData: dummyData,
-      },
-    });
-  };
 
-  const [dummyData, setDummyData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchRegistrationDataHandler = useCallback(() => {
-    setIsLoading(true);
-    const apiUrl = "https://api.jsonserver.io/UserInputRegistrationForm";
-    const headers = new Headers();
-    headers.append("X-Jsio-Token", "00b52ae22cb418afbee530f17a161298");
-
-    fetch(apiUrl, { headers })
+    //headers for other backend database, Firebase didnt need it, sending a POST request
+    //to send my reistrationdata to backend and get the data from backend
+    //sending data to that URL
+    fetch(
+      "https://kleiderspenden-63c69-default-rtdb.europe-west1.firebasedatabase.app/registrierungsdaten.json",
+      {
+        method: "POST",
+        body: JSON.stringify(registrationData),
+        headers: { "Content-Type": "application/json" },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -42,8 +32,83 @@ const HomePage = () => {
         return response.json();
       })
       .then((data) => {
-        //const dataArray = Object.values(data); // Convert the object values to an array
-        setDummyData(data);
+        //props.onAddRegistration(registrationData);
+        console.log(data);
+        setRegistrationData(data);
+
+        // Navigation to the OutputRegistration page after saving the data
+        navigate("/success", {
+          state: {
+            registrationData: registrationData,
+            //dummyData: dummyData,
+          },
+        });
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
+
+    console.log(registrationData);
+  };
+
+  //const [dummyData, setDummyData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchRegistrationDataHandler = useCallback(() => {
+    setIsLoading(true);
+
+    //   const apiUrl =
+    //     "https://api.jsonserver.io/UserInputRegistrationForm";
+    //   const headers = new Headers();
+    //   headers.append("X-Jsio-Token", "00b52ae22cb418afbee530f17a161298");
+
+    //   fetch(apiUrl, { headers })
+    //     .then((response) => {
+    //       if (!response.ok) {
+    //         throw new Error("Network response was not ok");
+    //       }
+    //       return response.json();
+    //     })
+    //     .then((data) => {
+    //       //const dataArray = Object.values(data); // Convert the object values to an array
+    //       setDummyData(data);
+    //       setIsLoading(false);
+    //     })
+    //     .catch((error) => {
+    //       console.error("Fetch error:", error);
+    //     });
+    // }, []);
+
+    const apiUrl =
+      "https://kleiderspenden-63c69-default-rtdb.europe-west1.firebasedatabase.app/registrierungsdaten.json";
+
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const transformedRegistrationData = {};
+
+        for (const key in data) {
+          transformedRegistrationData[key] = {
+            id: key,
+            clothes1: [key].clothes1,
+            location1: [key].location1,
+            firstName: [key].firstName,
+            lastName: [key].lastName,
+            street: [key].street,
+            zip: [key].zip,
+            city: [key].city,
+            clothes2: [key].clothes2,
+            location2: [key].location2,
+          };
+        }
+        setRegistrationData(transformedRegistrationData);
+
+        console.log(transformedRegistrationData);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -55,7 +120,9 @@ const HomePage = () => {
     fetchRegistrationDataHandler();
   }, [fetchRegistrationDataHandler]);
 
-  console.log(dummyData);
+  //console.log(dummyData);
+  //https://kleiderspenden-63c69-default-rtdb.europe-west1.firebasedatabase.app/ 02.09.2023 16:12
+  //https://console.firebase.google.com/project/kleiderspenden-63c69/database/kleiderspenden-63c69-default-rtdb/data/~2F
 
   return (
     <body>
@@ -69,30 +136,28 @@ const HomePage = () => {
           Vereins persönlich übergeben werden oder von einem Sammelfahrzeug
           abgeholt werden.
         </p>
-
-        <p>
-          Bitte wählen Sie die gewünschte Option aus und machen ihre Angaben.{" "}
-        </p>
       </section>
 
-      <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
-      {location.pathname === "/success" && !isLoading && (
-        <OutputRegistration
-          displayDummyData={dummyData}
-          displayRegistrationData={registrationData}
-        />
-      )}
-      {location.pathname === "/success" && isLoading && <p>Loading...</p>}
       <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
         </h2>
 
         <p>
-          Sie werden nach der Regstrierung auf eine Bestätigungsseite
+          Sie werden nach der Registrierung auf eine Bestätigungsseite
           weitergeleitet. Damit ist ihre Registrierung erfolgreich gewesen.
         </p>
       </section>
+
+      <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
+
+      {location.pathname === "/success" && (
+        <OutputRegistration
+          //displayDummyData={dummyData}
+          displayRegistrationData={registrationData}
+        />
+      )}
+      {location.pathname === "/success"}
 
       <section>
         <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>

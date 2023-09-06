@@ -1,24 +1,21 @@
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import "./../../index.css";
 
 const Footer = () => {
   return (
-    <Card className="text-left">
+    <Card className="my-footer">
       <Card.Header></Card.Header>
       <Card.Body>
         <Card.Title></Card.Title>
         <Card.Text>
-          <Link className="navbar-brand1" to="/privacy">
-            Datenschutz
-          </Link>
+          <Link to="/privacy">Datenschutz</Link>
         </Card.Text>
         <Card.Text>
-          <Link className="navbar-brand1" to="/imprint">
-            Impressum
-          </Link>
+          <Link to="/imprint">Impressum</Link>
         </Card.Text>
       </Card.Body>
-      <Card.Footer className="text-muted"></Card.Footer>
+      <Card.Footer></Card.Footer>
     </Card>
   );
 };
