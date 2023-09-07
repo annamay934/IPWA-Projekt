@@ -17,7 +17,7 @@ const PrivacyPage = () => {
         <section>
           <div className="background-image">
             <h1 className="custom-h1">Datenschutzerklärung</h1>
-            <h3 className="custom-h3">Einleitung und Überblick</h3>
+            <h2 className="custom-h2">Einleitung und Überblick</h2>
             <p>
               Wir haben diese Datenschutzerklärung (Fassung
               11.07.2023-312540679) verfasst, um Ihnen gemäß der Vorgaben der
@@ -49,7 +49,7 @@ const PrivacyPage = () => {
               und sich weitere Informationen auf Drittseiten anzusehen. Unsere
               Kontaktdaten finden Sie selbstverständlich auch im Impressum.
             </p>
-            <h3 class="custom-h3">Anwendungsbereich</h3>
+            <h2 class="custom-h2">Anwendungsbereich</h2>
             <p>
               Diese Datenschutzerklärung gilt für alle von uns im Unternehmen
               verarbeiteten personenbezogenen Daten und für alle
@@ -69,7 +69,7 @@ const PrivacyPage = () => {
               dieser Kanäle mit Ihnen in Rechtsbeziehungen eintreten, werden wir
               Sie gegebenenfalls gesondert informieren.
             </p>
-            <h3 class="custom-h3">Rechtsgrundlagen</h3>
+            <h2 class="custom-h2">Rechtsgrundlagen</h2>
             <p>
               In der folgenden Datenschutzerklärung geben wir Ihnen transparente
               Informationen zu den rechtlichen Grundsätzen und Vorschriften,
@@ -113,7 +113,7 @@ const PrivacyPage = () => {
               nationale Gesetze zur Anwendung kommen, informieren wir Sie in den
               folgenden Abschnitten darüber.
             </p>
-            <h3 class="custom-h3">Kontaktdaten des Verantwortlichen</h3>
+            <h2 class="custom-h2">Kontaktdaten des Verantwortlichen</h2>
             <p>
               Sollten Sie Fragen zum Datenschutz oder zur Verarbeitung
               personenbezogener Daten haben, finden Sie nachfolgend die
@@ -122,7 +122,7 @@ const PrivacyPage = () => {
               Mustermannstadt Deutschland E-Mail: mail@musterfirma.de Telefon:
               +49 4711 12345
             </p>
-            <h3 class="custom-h3">Speicherdauer</h3>
+            <h2 class="custom-h2">Speicherdauer</h2>
             <p>
               Dass wir personenbezogene Daten nur so lange speichern, wie es für
               die Bereitstellung unserer Dienstleistungen und Produkte unbedingt
@@ -138,7 +138,7 @@ const PrivacyPage = () => {
               der jeweiligen Datenverarbeitung informieren wir Sie weiter unten,
               sofern wir weitere Informationen dazu haben.
             </p>
-            <h3 class="custom-h3">Rechte laut Datenschutz-Grundverordnung</h3>
+            <h2 class="custom-h2">Rechte laut Datenschutz-Grundverordnung</h2>
             <p>
               Gemäß Artikel 13, 14 DSGVO informieren wir Sie über die folgenden
               Rechte, die Ihnen zustehen, damit es zu einer fairen und

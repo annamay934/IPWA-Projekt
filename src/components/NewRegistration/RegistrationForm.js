@@ -360,6 +360,18 @@ const RegistrationForm = (props) => {
                 Wir teilen ihre Daten nicht mit Dritten.
               </Form.Text>
             </Form.Group>
+
+            <Form.Group>
+              {(showForm1 || showForm2) && (
+                <Button
+                  variant="primary"
+                  type="submit"
+                  disabled={!formIsValid1 && !formIsValid2}
+                >
+                  Registrieren
+                </Button>
+              )}
+            </Form.Group>
           </Form.Group>
         )}
 
@@ -372,6 +384,7 @@ const RegistrationForm = (props) => {
             Abholung bei Ihnen zu Hause
           </Button>
         </strong>
+
         {showForm2 && !showForm1 && (
           <Form.Group className={form2InputClasses}>
             <Form.Group>
