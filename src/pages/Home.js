@@ -2,8 +2,12 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import RegistrationForm from "../components/NewRegistration/RegistrationForm";
 import OutputRegistration from "../components/OutputRegistration/OutputRegistration";
+import environmentalImage from "../jpg/environmental.jpg";
+import communityImage from "../jpg/community.jpg";
 
 const HomePage = () => {
+  const imgElement = document.createElement("img");
+
   const navigate = useNavigate(); // Hook for navigation
   const location = useLocation(); // Hook for getting current location
   const [registrationData, setRegistrationData] = useState(null);
@@ -137,7 +141,6 @@ const HomePage = () => {
           abgeholt werden.
         </p>
       </section>
-
       <section>
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
@@ -148,9 +151,7 @@ const HomePage = () => {
           weitergeleitet. Damit ist ihre Registrierung erfolgreich gewesen.
         </p>
       </section>
-
       <RegistrationForm onSaveRegistrationData={saveRegistrationDataHandler} />
-
       {location.pathname === "/success" && (
         <OutputRegistration
           //displayDummyData={dummyData}
@@ -160,16 +161,22 @@ const HomePage = () => {
       {location.pathname === "/success"}
 
       <section>
-        <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
-        <p>
-          Bei unserer Kleiderspendenaktion geht es nicht nur darum, Menschen in
-          Krisengebieten zu helfen, sondern auch die Umwelt zu schonen. Indem
-          Sie Ihre Kleidung bei uns spenden, tragen Sie dazu bei, den
-          Lebenszyklus von Kleidungsstücken zu verlängern und die
-          Ressourcenverschwendung zu reduzieren. Anstatt Kleidung wegzuwerfen,
-          geben Sie ihr eine neue Chance und minimieren so den ökologischen
-          Fußabdruck der Modeindustrie.
-        </p>
+        <div className="content">
+          <p>
+            <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
+            Bei unserer Kleiderspendenaktion geht es nicht nur darum, Menschen
+            in Krisengebieten zu helfen, sondern auch die Umwelt zu schonen.
+            Indem Sie Ihre Kleidung bei uns spenden, tragen Sie dazu bei, den
+            Lebenszyklus von Kleidungsstücken zu verlängern und die
+            Ressourcenverschwendung zu reduzieren. Anstatt Kleidung wegzuwerfen,
+            geben Sie ihr eine neue Chance und minimieren so den ökologischen
+            Fußabdruck der Modeindustrie.
+          </p>
+
+          <div className="umweltImage">
+            <img src={environmentalImage} alt="" />
+          </div>
+        </div>
       </section>
 
       <section>
@@ -186,15 +193,21 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
-        <p>
-          Unsere Kleiderspendenannahme ist ein Ort des gemeinschaftlichen
-          Engagements. Hier kommen Menschen mit unterschiedlichen Hintergründen
-          und Geschichten zusammen, um etwas Gutes zu tun. Wir schaffen einen
-          Raum, in dem gegenseitige Unterstützung und Solidarität gedeihen
-          können. Wir laden Sie herzlich ein, Teil unserer Gemeinschaft zu
-          werden und gemeinsam einen positiven Einfluss auf die Welt zu haben.
-        </p>
+        <div className="content">
+          <p>
+            <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
+            Unsere Kleiderspendenannahme ist ein Ort des gemeinschaftlichen
+            Engagements. Hier kommen Menschen mit unterschiedlichen
+            Hintergründen und Geschichten zusammen, um etwas Gutes zu tun. Wir
+            schaffen einen Raum, in dem gegenseitige Unterstützung und
+            Solidarität gedeihen können. Wir laden Sie herzlich ein, Teil
+            unserer Gemeinschaft zu werden und gemeinsam einen positiven
+            Einfluss auf die Welt zu haben.
+          </p>
+          <div className="communityImage">
+            <img src={communityImage} alt="" />
+          </div>
+        </div>
       </section>
 
       <section>
