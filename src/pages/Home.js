@@ -6,8 +6,6 @@ import environmentalImage from "../jpg/environmental.jpg";
 import communityImage from "../jpg/community.jpg";
 
 const HomePage = () => {
-  const imgElement = document.createElement("img");
-
   const navigate = useNavigate(); // Hook for navigation
   const location = useLocation(); // Hook for getting current location
   const [registrationData, setRegistrationData] = useState(null);
@@ -56,11 +54,7 @@ const HomePage = () => {
   };
 
   //const [dummyData, setDummyData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
   const fetchRegistrationDataHandler = useCallback(() => {
-    setIsLoading(true);
-
     //   const apiUrl =
     //     "https://api.jsonserver.io/UserInputRegistrationForm";
     //   const headers = new Headers();
@@ -113,7 +107,6 @@ const HomePage = () => {
         setRegistrationData(transformedRegistrationData);
 
         console.log(transformedRegistrationData);
-        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
@@ -173,8 +166,11 @@ const HomePage = () => {
             Fußabdruck der Modeindustrie.
           </p>
 
-          <div className="umweltImage">
-            <img src={environmentalImage} alt="" />
+          <div className="environmentalImage">
+            <img
+              src={environmentalImage}
+              alt="Baum in einer Glaskugel mit Wurzeln und Erde, Büsche drum herum, Fokus auf dem Baum"
+            />
           </div>
         </div>
       </section>
@@ -205,7 +201,10 @@ const HomePage = () => {
             Einfluss auf die Welt zu haben.
           </p>
           <div className="communityImage">
-            <img src={communityImage} alt="" />
+            <img
+              src={communityImage}
+              alt="Eine Gruppe von Menschen hält ihre Hände und Füße über dem Rasen"
+            />
           </div>
         </div>
       </section>

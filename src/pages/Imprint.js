@@ -2,18 +2,6 @@ const ImprintPage = () => {
   return (
     <div>
       <body>
-        <section>
-          <h1 className="custom-h1">
-            Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
-          </h1>
-          <p>
-            Gerne unterstützen wir Sie dabei, Ihren Beitrag zum Klimawandel zu
-            leisten. Die Klamotten können entweder an der Geschäftsstelle des
-            Vereins persönlich übergeben werden oder von einem Sammelfahrzeug
-            abgeholt werden.
-          </p>
-        </section>
-
         <div bordered hover className="table-container">
           <table>
             <thead>

@@ -39,7 +39,8 @@ code {
 p {
   font-size: 16px;
   text-align: center;
-  padding: 0 10em;
+  padding: 0 6em;
+  margin: 100px;
 }
 
 body {
@@ -102,30 +103,26 @@ button:disabled:active {
   flex-direction: row;
 }
 
-.umweltImage {
-  margin-left: 10px; /* Fügt einen Abstand zwischen Text und Bild hinzu */
-  margin-right: 70px;
+.environmentalImage {
+  margin-top: 10px;
+  margin-right: 60px; /* Ändern Sie den rechten Abstand, falls erforderlich */
   align-self: center;
-  display: inline;
-  height: 300px;
-  width: auto;
-}
-
-.umweltImage img {
-  max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als der Container ist */
 }
 
 .communityImage {
-  margin-left: 10px; /* Fügt einen Abstand zwischen Text und Bild hinzu */
-  margin-right: 70px;
+  margin-top: 10px;
+  margin-right: 60px; /* Ändern Sie den rechten Abstand, falls erforderlich */
   align-self: center;
-  display: inline;
-  height: 300px;
-  width: auto;
 }
 
 .communityImage img {
-  max-width: 100%; /* Stellt sicher, dass das Bild nicht breiter als der Container ist */
+  max-width: 100%;
+  height: auto;
+}
+
+.environmentalImage img {
+  max-width: 100%;
+  height: auto; /* Behält das Seitenverhältnis des Bildes bei */
 }
 
 .background-image::after {
@@ -254,6 +251,7 @@ button:disabled:active {
     font-size: 16px;
     text-align: center;
     padding: 0 2em;
+    margin: 0;
   }
 
   .custom-h1 {
@@ -266,6 +264,7 @@ button:disabled:active {
     margin-top: 10px;
     font-size: 22px;
     text-align: center;
+    margin-top: 20px;
   }
 
   .custom-h3 {
@@ -280,7 +279,15 @@ button:disabled:active {
   }
 
   .environmentalImage {
-    margin-left: 0; /* Entfernt den seitlichen Abstand */
+    margin-right: 100px;
+    margin-left: 100px; /* Entfernt den seitlichen Abstand */
+    margin-top: 20px; /* Fügt Abstand über dem Bild hinzu */
+    max-width: 100%; /* Begrenzt die Breite des Bildes, um es proportional zu behalten */
+  }
+
+  .communityImage {
+    margin-right: 100px;
+    margin-left: 100px; /* Entfernt den seitlichen Abstand */
     margin-top: 20px; /* Fügt Abstand über dem Bild hinzu */
     max-width: 100%; /* Begrenzt die Breite des Bildes, um es proportional zu behalten */
   }

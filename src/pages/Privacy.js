@@ -3,18 +3,6 @@ const PrivacyPage = () => {
     <div>
       <body>
         <section>
-          <h1 className="custom-h1">
-            Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
-          </h1>
-          <p>
-            Gerne unterstützen wir Sie dabei, Ihren Beitrag zum Klimawandel zu
-            leisten. Die Klamotten können entweder an der Geschäftsstelle des
-            Vereins persönlich übergeben werden oder von einem Sammelfahrzeug
-            abgeholt werden.
-          </p>
-        </section>
-
-        <section>
           <div className="background-image">
             <h1 className="custom-h1">Datenschutzerklärung</h1>
             <h2 className="custom-h2">Einleitung und Überblick</h2>
