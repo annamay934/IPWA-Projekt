@@ -309,7 +309,7 @@ const RegistrationForm = (props) => {
             onClick={toggleForm1}
             variant="outline-secondary"
           >
-            Übergabe an der Geschäftsstelle/Tabletregistrierung
+            Übergabe an der Geschäftsstelle
           </Button>
         </strong>
 
