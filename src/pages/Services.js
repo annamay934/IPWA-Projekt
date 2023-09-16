@@ -2,8 +2,8 @@ const ServicesPage = () => {
   return (
     <body>
       <section>
-        <div class="background-image">
-          <h1 class="custom-h1">Unsere Leistungen</h1>
+        <div className="background-image">
+          <h1 className="custom-h1">Unsere Leistungen</h1>
           <br />
           <p>
             <strong>Kleiderspendenannahme:</strong>

@@ -139,7 +139,6 @@ const HomePage = () => {
         <h2 className="custom-h2">
           Bitte wählen Sie aus den zwei Varianten hier aus:
         </h2>
-
         <p>
           Sie werden nach der Registrierung auf eine Bestätigungsseite
           weitergeleitet. Damit ist ihre Registrierung erfolgreich gewesen.
@@ -156,8 +155,8 @@ const HomePage = () => {
 
       <section>
         <div className="content">
+          <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
           <p>
-            <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
             Bei unserer Kleiderspendenaktion geht es nicht nur darum, Menschen
             in Krisengebieten zu helfen, sondern auch die Umwelt zu schonen.
             Indem Sie Ihre Kleidung bei uns spenden, tragen Sie dazu bei, den
@@ -191,8 +190,8 @@ const HomePage = () => {
 
       <section>
         <div className="content">
+          <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
           <p>
-            <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
             Unsere Kleiderspendenannahme ist ein Ort des gemeinschaftlichen
             Engagements. Hier kommen Menschen mit unterschiedlichen
             Hintergründen und Geschichten zusammen, um etwas Gutes zu tun. Wir
