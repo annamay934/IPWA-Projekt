@@ -278,7 +278,6 @@ button:disabled:active {
     margin-top: 10px;
     font-size: 22px;
     text-align: center;
-    margin-top: 20px;
   }
 
   .custom-h3 {
@@ -329,5 +328,13 @@ button:disabled:active {
 
   .error-text {
     color: brown;
+  }
+
+  .custom-h1 {
+    margin: 20px;
+  }
+
+  .custom-h2 {
+    margin: 20px;
   }
 }

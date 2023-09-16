@@ -13,7 +13,9 @@ const RootLayout = () => {
         <div className="background-image"></div>
       </div>
       <Outlet />
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </>
   );
 };
