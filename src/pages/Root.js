@@ -5,18 +5,16 @@ import "./../index.css";
 
 const RootLayout = () => {
   return (
-    <>
-      <div>
-        <header>
-          <Navigation />
-        </header>
-        <div className="background-image"></div>
-      </div>
+    <div>
+      <header>
+        <Navigation />
+      </header>
+      <div className="background-image"></div>
       <Outlet />
       <div>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

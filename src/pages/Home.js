@@ -123,7 +123,7 @@ const HomePage = () => {
   //https://console.firebase.google.com/project/kleiderspenden-63c69/database/kleiderspenden-63c69-default-rtdb/data/~2F
 
   return (
-    <body>
+    <div>
       <section>
         <h1 className="custom-h1">
           Willkommen auf der Homepage von Ihrer Kleiderspendenannahme
@@ -154,8 +154,8 @@ const HomePage = () => {
       {location.pathname === "/success"}
 
       <section>
+        <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
         <div className="content">
-          <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
           <p>
             Bei unserer Kleiderspendenaktion geht es nicht nur darum, Menschen
             in Krisengebieten zu helfen, sondern auch die Umwelt zu schonen.
@@ -189,8 +189,8 @@ const HomePage = () => {
       </section>
 
       <section>
+        <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
         <div className="content">
-          <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
           <p>
             Unsere Kleiderspendenannahme ist ein Ort des gemeinschaftlichen
             Engagements. Hier kommen Menschen mit unterschiedlichen
@@ -221,7 +221,7 @@ const HomePage = () => {
           inspirierend.
         </p>
       </section>
-    </body>
+    </div>
   );
 };
 

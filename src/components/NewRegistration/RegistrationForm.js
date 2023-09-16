@@ -367,7 +367,7 @@ const RegistrationForm = (props) => {
                 <Button
                   variant="primary"
                   type="submit"
-                  disabled={!formIsValid1 && !formIsValid2}
+                  disabled={!formIsValid1 || (formIsValid1 && formIsValid2)}
                 >
                   Registrieren
                 </Button>
@@ -521,7 +521,7 @@ const RegistrationForm = (props) => {
                 <Button
                   variant="primary"
                   type="submit"
-                  disabled={!formIsValid1 && !formIsValid2}
+                  disabled={!formIsValid2 || (formIsValid2 && formIsValid1)}
                 >
                   Registrieren
                 </Button>

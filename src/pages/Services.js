@@ -1,8 +1,8 @@
 const ServicesPage = () => {
   return (
-    <body>
+    <div>
       <section>
-        <div className="background-image">
+        <div>
           <h1 className="custom-h1">Unsere Leistungen</h1>
           <br />
           <p>
@@ -71,7 +71,7 @@ const ServicesPage = () => {
           </p>
         </div>
       </section>
-    </body>
+    </div>
   );
 };
 
