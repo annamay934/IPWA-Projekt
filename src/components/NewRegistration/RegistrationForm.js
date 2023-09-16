@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const RegistrationForm = (props) => {
-  //wenn 1. Formular ausgewählt wird, verschwindet das zweite für den Homepage Besucher
+  //if clicked on first form, second will be not displayed and vice versa
   const [showForm1, setShowForm1] = useState(false);
   const toggleForm1 = () => {
     setShowForm1(!showForm1);
@@ -16,7 +16,7 @@ const RegistrationForm = (props) => {
     setShowForm1(false);
   };
 
-  //Zustand der Eingabefelder im 1. Formular,  Angabe: Kleiderart und Unterstützungsort
+  //state of the form1 input, clothes1/location1
   const [enteredClothes1, setEnteredClothes1] = useState("");
   const [enteredLocation1, setEnteredLocation1] = useState("");
 
@@ -28,22 +28,22 @@ const RegistrationForm = (props) => {
     setEnteredLocation1(event.target.value);
   };
 
-  //mit einer ersten Validierung den Vornamen prüfen
+  //validate the input, check if input field is touched
   const [enteredClothes1Touched, setEnteredClothes1Touched] = useState(false);
   const [enteredLocation1Touched, setEnteredLocation1Touched] = useState(false);
 
-  //enteredClothes1Valid ist valide, wenn enteredClothes1 nicht leer ist
+  //enteredClothes1Valid is valide, if enteredClothes1 is not empty
   const enteredClothes1IsValid = enteredClothes1.trim() !== "";
   const enteredLocation1IsValid = enteredLocation1.trim() !== "";
 
-  //hat der User das Feld berührt/reingeklickt
+  //has user clicked in input field
   const clothes1InputIsInvalid =
     !enteredClothes1IsValid && enteredClothes1Touched;
 
   const location1InputIsInvalid =
     !enteredLocation1IsValid && enteredLocation1Touched;
 
-  //Variable für Validierung Form1 erstellen
+  //variable for validation of form1 created
   let formIsValid1 = false;
 
   //Form1 Validation state change, depends on different user inputs
@@ -51,7 +51,7 @@ const RegistrationForm = (props) => {
     formIsValid1 = true;
   }
 
-  //BlurHandler for firstName, User tips in field writes and cancel
+  //BlurHandler for clothes1, User tips in field writes and cancel
   const clothes1InputBlurHandler = (event) => {
     setEnteredClothes1Touched(true);
   };
@@ -194,15 +194,16 @@ const RegistrationForm = (props) => {
     setEnteredLocation2Touched(true);
   };
 
-  //Unterdrücken des vollständigen Ladens der Homepage
+  //Submit of forms
   const submitHandler = (event) => {
+    //prevent homepage from loading completly new
     event.preventDefault();
 
-    //Form1
+    //Form1 input is touched
     setEnteredClothes1Touched(true);
     setEnteredLocation1Touched(true);
 
-    //Form2
+    //Form2 input is touched
     setEnteredFirstNameTouched(true);
     setEnteredLastNameTouched(true);
     setEnteredStreetTouched(true);
@@ -211,7 +212,7 @@ const RegistrationForm = (props) => {
     setEnteredClothes2Touched(true);
     setEnteredLocation2Touched(true);
 
-    //if enteredFirstName is not valid, cancel submit
+    //if input is not valid, cancel submit
     if (
       !enteredClothes1IsValid &&
       !enteredLocation1IsValid &&
@@ -226,11 +227,11 @@ const RegistrationForm = (props) => {
       return;
     }
 
-    //From1
+    //From1 reset input to empty string
     setEnteredClothes1("");
     setEnteredLocation1("");
 
-    //Form2
+    //Form2 reset input to empty string
     setEnteredFirstName("");
     setEnteredLastName("");
     setEnteredStreet("");
@@ -239,11 +240,11 @@ const RegistrationForm = (props) => {
     setEnteredClothes2("");
     setEnteredLocation2("");
 
-    //Form1
+    //Form1 set input to not touched
     setEnteredClothes1Touched(false);
     setEnteredLocation1Touched(false);
 
-    //Form2
+    //Form2 set input to not touched
     setEnteredFirstNameTouched(false);
     setEnteredLastNameTouched(false);
     setEnteredStreetTouched(false);
@@ -252,7 +253,7 @@ const RegistrationForm = (props) => {
     setEnteredClothes2Touched(false);
     setEnteredLocation2Touched(false);
 
-    //Eingabedaten dem Objekt registrationData übergeben
+    //save input into object registrationData
     const registrationData = {
       clothes1: enteredClothes1,
       location1: enteredLocation1,
@@ -265,7 +266,7 @@ const RegistrationForm = (props) => {
       location2: enteredLocation2,
     };
 
-    //Setzen der Zustände nach Drücken auf "submit" auf leere Zeilenreihen
+    //Setting the states to empty rows after pressing "submit"
     props.onSaveRegistrationData(registrationData);
     setEnteredClothes1("");
     setEnteredLocation1("");
@@ -281,7 +282,7 @@ const RegistrationForm = (props) => {
     console.log(formIsValid2);
   };
 
-  //invalid Aussehen hinzufügen für die Felder, https://react-bootstrap.netlify.app/docs/forms/overview/ 30.08.2023
+  //invalid appearance added for all input fields https://react-bootstrap.netlify.app/docs/forms/overview/ 30.08.2023
   //Form1
   const form1InputClasses =
     clothes1InputIsInvalid || location1InputIsInvalid

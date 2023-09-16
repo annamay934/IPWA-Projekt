@@ -55,27 +55,28 @@ const HomePage = () => {
 
   //const [dummyData, setDummyData] = useState([]);
   const fetchRegistrationDataHandler = useCallback(() => {
-    //   const apiUrl =
-    //     "https://api.jsonserver.io/UserInputRegistrationForm";
-    //   const headers = new Headers();
-    //   headers.append("X-Jsio-Token", "00b52ae22cb418afbee530f17a161298");
+    //dummyData from jsonserver
+    /* const apiUrl =
+         "https://api.jsonserver.io/UserInputRegistrationForm";
+       const headers = new Headers();
+       headers.append("X-Jsio-Token", "00b52ae22cb418afbee530f17a161298");
 
-    //   fetch(apiUrl, { headers })
-    //     .then((response) => {
-    //       if (!response.ok) {
-    //         throw new Error("Network response was not ok");
-    //       }
-    //       return response.json();
-    //     })
-    //     .then((data) => {
-    //       //const dataArray = Object.values(data); // Convert the object values to an array
-    //       setDummyData(data);
-    //       setIsLoading(false);
-    //     })
-    //     .catch((error) => {
-    //       console.error("Fetch error:", error);
-    //     });
-    // }, []);
+       fetch(apiUrl, { headers })
+         .then((response) => {
+           if (!response.ok) {
+             throw new Error("Network response was not ok");
+           }
+           return response.json();
+         })
+         .then((data) => {
+           //const dataArray = Object.values(data); // Convert the object values to an array
+           setDummyData(data);
+           setIsLoading(false);
+         })
+         .catch((error) => {
+           console.error("Fetch error:", error);
+        });
+     }, []); */
 
     const apiUrl =
       "https://kleiderspenden-63c69-default-rtdb.europe-west1.firebasedatabase.app/registrierungsdaten.json";
