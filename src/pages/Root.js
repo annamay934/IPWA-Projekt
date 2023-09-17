@@ -5,11 +5,11 @@ import "./../index.css";
 
 const RootLayout = () => {
   return (
-    <div>
-      <header>
+    <div className="flex-wrapper">
+      <header className="background-image">
         <Navigation />
       </header>
-      <div className="background-image"></div>
+      <div></div>
       <Outlet />
       <div>
         <Footer />

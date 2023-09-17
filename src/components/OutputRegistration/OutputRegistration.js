@@ -42,7 +42,7 @@ const OutputRegistration = () => {
           Ihre Registrierung ist damit abgeschlossen.
         </h3>
 
-        <Table striped bordered hover className="table-container">
+        <Table className="table-container">
           <tbody>
             <tr>
               <th>Vorname</th>
@@ -97,7 +97,7 @@ const OutputRegistration = () => {
           Ihre Registrierung ist damit abgeschlossen.
         </h3>
 
-        <Table striped bordered hover className="table-container">
+        <Table className="table-container">
           <tbody>
             <tr>
               <th>Kleiderart</th>
@@ -113,6 +113,67 @@ const OutputRegistration = () => {
     );
   } else {
     console.log("Reached the else block");
+    const {
+      firstName,
+      lastName,
+      street,
+      zip,
+      city,
+      clothes2,
+      location2,
+      clothes1,
+      location1,
+    } = state.registrationData;
+
+    return (
+      <div>
+        <h1 className="custom-h1">Vielen Dank für ihre Spende!</h1>
+        <h3 className="custom-h3">
+          Ihre Registrierung ist damit abgeschlossen.
+        </h3>
+
+        <Table className="table-container">
+          <tbody>
+            <tr>
+              <th>Vorname</th>
+              <td>{firstName}</td>
+            </tr>
+            <tr>
+              <th>Nachname</th>
+              <td>{lastName}</td>
+            </tr>
+            <tr>
+              <th>Straße</th>
+              <td>{street}</td>
+            </tr>
+            <tr>
+              <th>Postleitzahl</th>
+              <td>{zip}</td>
+            </tr>
+            <tr>
+              <th>Wohnort</th>
+              <td>{city}</td>
+            </tr>
+            <tr>
+              <th>Kleiderart</th>
+              <td>{clothes2}</td>
+            </tr>
+            <tr>
+              <th>Krisengebiet</th>
+              <td>{location2}</td>
+            </tr>
+            <tr>
+              <th>Kleiderart</th>
+              <td>{clothes1}</td>
+            </tr>
+            <tr>
+              <th>Krisengebiet</th>
+              <td>{location1}</td>
+            </tr>
+          </tbody>
+        </Table>
+      </div>
+    );
     // console.log("Dummy Data:", state.dummyData);
 
     // return (

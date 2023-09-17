@@ -65,6 +65,13 @@ button:disabled:active {
   cursor: not-allowed;
 }
 
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .nav-link {
   margin-left: 30px;
 }

@@ -347,7 +347,7 @@ const RegistrationForm = (props) => {
                 onChange={dropdownLocation1ChangeHandler}
                 onBlur={location1InputBlurHandler}
               >
-                <option value="Bitte auswählen">Bitte auswählen</option>
+                <option value="">Bitte auswählen</option>
                 <option value="Libyen">Libyen</option>
                 <option value="Somalia">Somalia</option>
                 <option value="Süd Sudan">Süd Sudan</option>
@@ -501,7 +501,7 @@ const RegistrationForm = (props) => {
                 onChange={dropdownLocation2ChangeHandler}
                 onBlur={location2InputBlurHandler}
               >
-                <option value="Bitte auswählen">Bitte auswählen</option>
+                <option value="">Bitte auswählen</option>
                 <option value="Libyen">Libyen</option>
                 <option value="Somalia">Somalia</option>
                 <option value="Süd Sudan">Süd Sudan</option>

@@ -154,17 +154,19 @@ const HomePage = () => {
       {location.pathname === "/success"}
 
       <section>
-        <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
         <div className="content">
-          <p>
-            Bei unserer Kleiderspendenaktion geht es nicht nur darum, Menschen
-            in Krisengebieten zu helfen, sondern auch die Umwelt zu schonen.
-            Indem Sie Ihre Kleidung bei uns spenden, tragen Sie dazu bei, den
-            Lebenszyklus von Kleidungsstücken zu verlängern und die
-            Ressourcenverschwendung zu reduzieren. Anstatt Kleidung wegzuwerfen,
-            geben Sie ihr eine neue Chance und minimieren so den ökologischen
-            Fußabdruck der Modeindustrie.
-          </p>
+          <div>
+            <h2 className="custom-h2">Unser Engagement für die Umwelt:</h2>
+            <p>
+              Bei unserer Kleiderspendenaktion geht es nicht nur darum, Menschen
+              in Krisengebieten zu helfen, sondern auch die Umwelt zu schonen.
+              Indem Sie Ihre Kleidung bei uns spenden, tragen Sie dazu bei, den
+              Lebenszyklus von Kleidungsstücken zu verlängern und die
+              Ressourcenverschwendung zu reduzieren. Anstatt Kleidung
+              wegzuwerfen, geben Sie ihr eine neue Chance und minimieren so den
+              ökologischen Fußabdruck der Modeindustrie.
+            </p>
+          </div>
 
           <div className="environmentalImage">
             <img
@@ -189,17 +191,20 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
         <div className="content">
-          <p>
-            Unsere Kleiderspendenannahme ist ein Ort des gemeinschaftlichen
-            Engagements. Hier kommen Menschen mit unterschiedlichen
-            Hintergründen und Geschichten zusammen, um etwas Gutes zu tun. Wir
-            schaffen einen Raum, in dem gegenseitige Unterstützung und
-            Solidarität gedeihen können. Wir laden Sie herzlich ein, Teil
-            unserer Gemeinschaft zu werden und gemeinsam einen positiven
-            Einfluss auf die Welt zu haben.
-          </p>
+          <div>
+            <h2 className="custom-h2">Gemeinschaftliches Engagement:</h2>
+            <p>
+              Unsere Kleiderspendenannahme ist ein Ort des gemeinschaftlichen
+              Engagements. Hier kommen Menschen mit unterschiedlichen
+              Hintergründen und Geschichten zusammen, um etwas Gutes zu tun. Wir
+              schaffen einen Raum, in dem gegenseitige Unterstützung und
+              Solidarität gedeihen können. Wir laden Sie herzlich ein, Teil
+              unserer Gemeinschaft zu werden und gemeinsam einen positiven
+              Einfluss auf die Welt zu haben.
+            </p>
+          </div>
+
           <div className="communityImage">
             <img
               src={communityImage}
