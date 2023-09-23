@@ -157,11 +157,6 @@ button:disabled:active {
   background-color: #fddddd;
 }
 
-.invalid input:focus {
-  border-color: #ff8800;
-  background-color: #fbe8d2;
-}
-
 .table-container {
   display: flex;
   justify-content: center;
