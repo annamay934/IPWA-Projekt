@@ -212,10 +212,10 @@ button:disabled:active {
 /*tablet*/
 @media only screen and (max-width: 767px) {
   .navbar-brand {
-    display: block; /* Zeige die Überschrift als Blockelement an */
-    text-align: left; /* Zentriere den Text */
-    width: auto; /* Feste Breite für das Element festlegen */
-    word-break: normal; /* Teilt den Text auf mehrere Zeilen auf */
+    display: block;
+    text-align: left;
+    width: auto;
+    word-break: normal;
   }
 
   .navbar-light .navbar-brand {
