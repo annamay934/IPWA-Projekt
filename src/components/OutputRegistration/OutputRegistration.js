@@ -21,17 +21,28 @@ const OutputRegistration = () => {
   console.log("isEmptyString(location1):", isEmptyString(state.location1));
 
   if (
-    !isEmptyString(state.registrationData.firstName) &&
-    !isEmptyString(state.registrationData.lastName) &&
-    !isEmptyString(state.registrationData.street) &&
-    !isEmptyString(state.registrationData.zip) &&
-    !isEmptyString(state.registrationData.city) &&
-    !isEmptyString(state.registrationData.clothes2) &&
-    !isEmptyString(state.registrationData.location2) &&
-    !isEmptyString(state.registrationData.date) &&
-    !isEmptyString(state.registrationData.userLocation) &&
-    isEmptyString(state.registrationData.clothes1) &&
-    isEmptyString(state.registrationData.location1)
+    (!isEmptyString(state.registrationData.firstName) &&
+      !isEmptyString(state.registrationData.lastName) &&
+      !isEmptyString(state.registrationData.street) &&
+      !isEmptyString(state.registrationData.zip) &&
+      !isEmptyString(state.registrationData.city) &&
+      !isEmptyString(state.registrationData.clothes2) &&
+      !isEmptyString(state.registrationData.location2) &&
+      !isEmptyString(state.registrationData.date) &&
+      !isEmptyString(state.registrationData.userLocation) &&
+      isEmptyString(state.registrationData.clothes1) &&
+      isEmptyString(state.registrationData.location1)) ||
+    (!isEmptyString(state.registrationData.firstName) &&
+      !isEmptyString(state.registrationData.lastName) &&
+      !isEmptyString(state.registrationData.street) &&
+      !isEmptyString(state.registrationData.zip) &&
+      !isEmptyString(state.registrationData.city) &&
+      !isEmptyString(state.registrationData.clothes2) &&
+      !isEmptyString(state.registrationData.location2) &&
+      !isEmptyString(state.registrationData.date) &&
+      isEmptyString(state.registrationData.userLocation) &&
+      isEmptyString(state.registrationData.clothes1) &&
+      isEmptyString(state.registrationData.location1))
   ) {
     console.log("Reached the if block");
     const {
@@ -98,17 +109,28 @@ const OutputRegistration = () => {
       </div>
     );
   } else if (
-    isEmptyString(state.registrationData.firstName) &&
-    isEmptyString(state.registrationData.lastName) &&
-    isEmptyString(state.registrationData.street) &&
-    isEmptyString(state.registrationData.zip) &&
-    isEmptyString(state.registrationData.city) &&
-    isEmptyString(state.registrationData.clothes2) &&
-    isEmptyString(state.registrationData.location2) &&
-    !isEmptyString(state.registrationData.clothes1) &&
-    !isEmptyString(state.registrationData.location1) &&
-    !isEmptyString(state.registrationData.date) &&
-    !isEmptyString(state.registrationData.userLocation)
+    (isEmptyString(state.registrationData.firstName) &&
+      isEmptyString(state.registrationData.lastName) &&
+      isEmptyString(state.registrationData.street) &&
+      isEmptyString(state.registrationData.zip) &&
+      isEmptyString(state.registrationData.city) &&
+      isEmptyString(state.registrationData.clothes2) &&
+      isEmptyString(state.registrationData.location2) &&
+      !isEmptyString(state.registrationData.clothes1) &&
+      !isEmptyString(state.registrationData.location1) &&
+      !isEmptyString(state.registrationData.date) &&
+      !isEmptyString(state.registrationData.userLocation)) ||
+    (isEmptyString(state.registrationData.firstName) &&
+      isEmptyString(state.registrationData.lastName) &&
+      isEmptyString(state.registrationData.street) &&
+      isEmptyString(state.registrationData.zip) &&
+      isEmptyString(state.registrationData.city) &&
+      isEmptyString(state.registrationData.clothes2) &&
+      isEmptyString(state.registrationData.location2) &&
+      !isEmptyString(state.registrationData.clothes1) &&
+      !isEmptyString(state.registrationData.location1) &&
+      !isEmptyString(state.registrationData.date) &&
+      isEmptyString(state.registrationData.userLocation))
   ) {
     console.log("Reached the else if block");
     const { clothes1, location1, date, userLocation } = state.registrationData;

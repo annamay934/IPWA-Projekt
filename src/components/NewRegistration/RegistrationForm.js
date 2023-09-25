@@ -22,7 +22,7 @@ const RegistrationForm = (props) => {
   const formattedDateAndTime = format(currentDate, "dd.MM.yyyy HH:mm:ss");
 
   //getlocation
-  const [locationData, setLocationData] = useState(null);
+  const [locationData, setLocationData] = useState("");
 
   function getLocation() {
     if ("geolocation" in navigator) {
@@ -34,7 +34,7 @@ const RegistrationForm = (props) => {
       });
     } else {
       // Geolokation wird im Browser nicht unterstützt
-      setLocationData(null);
+      setLocationData("");
     }
   }
 
