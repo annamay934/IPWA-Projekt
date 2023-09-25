@@ -12,7 +12,7 @@ const HomePage = () => {
   const [registrationData, setRegistrationData] = useState(null);
 
   const saveRegistrationDataHandler = (enteredRegistrationData) => {
-    const registrationData = {
+    const requestData = {
       ...enteredRegistrationData,
       //id: Math.random().toString(),
     };
@@ -24,7 +24,7 @@ const HomePage = () => {
       "https://kleiderspenden-63c69-default-rtdb.europe-west1.firebasedatabase.app/registrierungsdaten.json",
       {
         method: "POST",
-        body: JSON.stringify(registrationData),
+        body: JSON.stringify(requestData),
         headers: { "Content-Type": "application/json" },
       }
     )
@@ -37,12 +37,16 @@ const HomePage = () => {
       .then((data) => {
         //props.onAddRegistration(registrationData);
         console.log(data);
-        setRegistrationData(data);
+        //setRegistrationData(data);
 
         // Navigation to the OutputRegistration page after saving the data
         navigate("/success", {
           state: {
-            registrationData: registrationData,
+            registrationData: requestData,
+            /*
+            registrationData: registrationData
+            would transfer the transformedRegistrationData to OutputRegistration
+            */
             //dummyData: dummyData,
           },
         });
@@ -51,13 +55,13 @@ const HomePage = () => {
         console.error("There was a problem with the fetch operation:", error);
       });
 
-    console.log(registrationData);
+    console.log(requestData);
   };
 
   //const [dummyData, setDummyData] = useState([]);
-  const fetchRegistrationDataHandler = useCallback(() => {
-    //dummyData from jsonserver
-    /* const apiUrl =
+
+  //dummyData from jsonserver
+  /* const apiUrl =
          "https://api.jsonserver.io/UserInputRegistrationForm";
        const headers = new Headers();
        headers.append("X-Jsio-Token", "00b52ae22cb418afbee530f17a161298");
@@ -79,6 +83,7 @@ const HomePage = () => {
         });
      }, []); */
 
+  const fetchRegistrationDataHandler = useCallback(() => {
     const apiUrl =
       "https://kleiderspenden-63c69-default-rtdb.europe-west1.firebasedatabase.app/registrierungsdaten.json";
 
@@ -95,16 +100,17 @@ const HomePage = () => {
         for (const key in data) {
           transformedRegistrationData[key] = {
             id: key,
-            clothes1: [key].clothes1,
-            location1: [key].location1,
-            firstName: [key].firstName,
-            lastName: [key].lastName,
-            street: [key].street,
-            zip: [key].zip,
-            city: [key].city,
-            clothes2: [key].clothes2,
-            location2: [key].location2,
-            dateAndTime: [key].date,
+            clothes1: data[key].clothes1,
+            location1: data[key].location1,
+            firstName: data[key].firstName,
+            lastName: data[key].lastName,
+            street: data[key].street,
+            zip: data[key].zip,
+            city: data[key].city,
+            clothes2: data[key].clothes2,
+            location2: data[key].location2,
+            dateAndTime: data[key].date,
+            userLocation: data[key].userLocation,
           };
         }
         setRegistrationData(transformedRegistrationData);
