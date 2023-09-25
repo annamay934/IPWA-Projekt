@@ -29,6 +29,7 @@ const OutputRegistration = () => {
     !isEmptyString(state.registrationData.clothes2) &&
     !isEmptyString(state.registrationData.location2) &&
     !isEmptyString(state.registrationData.date) &&
+    !isEmptyString(state.registrationData.userLocation) &&
     isEmptyString(state.registrationData.clothes1) &&
     isEmptyString(state.registrationData.location1)
   ) {
@@ -42,6 +43,7 @@ const OutputRegistration = () => {
       clothes2,
       location2,
       date,
+      userLocation,
     } = state.registrationData;
 
     return (
@@ -85,6 +87,12 @@ const OutputRegistration = () => {
               <th>Datum und Uhrzeit</th>
               <td>{date}</td>
             </tr>
+            <tr>
+              <th>Ort</th>
+              <td>
+                {userLocation.latitude} {userLocation.longitude}
+              </td>
+            </tr>
           </tbody>
         </Table>
       </div>
@@ -99,10 +107,11 @@ const OutputRegistration = () => {
     isEmptyString(state.registrationData.location2) &&
     !isEmptyString(state.registrationData.clothes1) &&
     !isEmptyString(state.registrationData.location1) &&
-    !isEmptyString(state.registrationData.date)
+    !isEmptyString(state.registrationData.date) &&
+    !isEmptyString(state.registrationData.userLocation)
   ) {
     console.log("Reached the else if block");
-    const { clothes1, location1, date } = state.registrationData;
+    const { clothes1, location1, date, userLocation } = state.registrationData;
 
     return (
       <div>
@@ -125,6 +134,12 @@ const OutputRegistration = () => {
               <th>Datum und Uhrzeit</th>
               <td>{date}</td>
             </tr>
+            <tr>
+              <th>Ort</th>
+              <td>
+                {userLocation.latitude} {userLocation.longitude}
+              </td>
+            </tr>
           </tbody>
         </Table>
       </div>
@@ -132,12 +147,80 @@ const OutputRegistration = () => {
   } else {
     console.log("Reached the else block");
 
+    const {
+      firstName,
+      lastName,
+      street,
+      zip,
+      city,
+      clothes2,
+      location2,
+      clothes1,
+      location1,
+      date,
+      userLocation,
+    } = state.registrationData;
+
     return (
       <div>
         <section>
-          <h1 className="custom-h1">Ein Problem ist aufgetreten</h1>
-          <p>Diese Seite konnte nicht gefunden werden.</p>
+          <h1 className="custom-h1">
+            Upps! Sie haben ausversehen beide Formulare ausgefüllt
+          </h1>
+          <p>Kein Problem. Ihr Daten gehen nicht verloren.</p>
         </section>
+
+        <Table className="table-container">
+          <tbody>
+            <tr>
+              <th>Kleiderart</th>
+              <td>{clothes1}</td>
+            </tr>
+            <tr>
+              <th>Krisengebiet</th>
+              <td>{location1}</td>
+            </tr>
+
+            <tr>
+              <th>Vorname</th>
+              <td>{firstName}</td>
+            </tr>
+            <tr>
+              <th>Nachname</th>
+              <td>{lastName}</td>
+            </tr>
+            <tr>
+              <th>Straße</th>
+              <td>{street}</td>
+            </tr>
+            <tr>
+              <th>Postleitzahl</th>
+              <td>{zip}</td>
+            </tr>
+            <tr>
+              <th>Wohnort</th>
+              <td>{city}</td>
+            </tr>
+            <tr>
+              <th>Kleiderart</th>
+              <td>{clothes2}</td>
+            </tr>
+            <tr>
+              <th>Krisengebiet</th>
+              <td>{location2}</td>
+            </tr>
+            <tr>
+              <th>Datum und Uhrzeit</th>
+              <td>{date}</td>
+            </tr>
+            <tr>
+              <th>Ort</th>
+              <td>
+                {userLocation.latitude} {userLocation.longitude}
+              </td>
+            </tr>
+          </tbody>
+        </Table>
       </div>
     );
   }

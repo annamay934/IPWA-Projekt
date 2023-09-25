@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { format } from "date-fns";
@@ -20,6 +20,27 @@ const RegistrationForm = (props) => {
   //create new Date
   const currentDate = new Date();
   const formattedDateAndTime = format(currentDate, "dd.MM.yyyy HH:mm:ss");
+
+  //getlocation
+  const [locationData, setLocationData] = useState(null);
+
+  function getLocation() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLocationData({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
+      // Geolokation wird im Browser nicht unterstützt
+      setLocationData(null);
+    }
+  }
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   //state of the form1 input, clothes1/location1
   const [enteredClothes1, setEnteredClothes1] = useState("");
@@ -270,6 +291,7 @@ const RegistrationForm = (props) => {
       clothes2: enteredClothes2,
       location2: enteredLocation2,
       date: formattedDateAndTime,
+      userLocation: locationData,
     };
 
     //Setting the states to empty rows after pressing "submit"

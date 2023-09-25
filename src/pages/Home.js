@@ -8,6 +8,7 @@ import communityImage from "../jpg/community.jpg";
 const HomePage = () => {
   const navigate = useNavigate(); // Hook for navigation
   const location = useLocation(); // Hook for getting current location
+
   const [registrationData, setRegistrationData] = useState(null);
 
   const saveRegistrationDataHandler = (enteredRegistrationData) => {
