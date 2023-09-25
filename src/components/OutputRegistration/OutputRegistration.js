@@ -99,7 +99,7 @@ const OutputRegistration = () => {
               <td>{date}</td>
             </tr>
             <tr>
-              <th>Ort</th>
+              <th>Breitengrad und Längengrad</th>
               <td>
                 {userLocation.latitude} {userLocation.longitude}
               </td>
@@ -157,7 +157,7 @@ const OutputRegistration = () => {
               <td>{date}</td>
             </tr>
             <tr>
-              <th>Ort</th>
+              <th>Breitengrad und Längengrad</th>
               <td>
                 {userLocation.latitude} {userLocation.longitude}
               </td>
@@ -236,7 +236,7 @@ const OutputRegistration = () => {
               <td>{date}</td>
             </tr>
             <tr>
-              <th>Ort</th>
+              <th>Breitengrad und Längengrad</th>
               <td>
                 {userLocation.latitude} {userLocation.longitude}
               </td>
