@@ -28,12 +28,21 @@ const OutputRegistration = () => {
     !isEmptyString(state.registrationData.city) &&
     !isEmptyString(state.registrationData.clothes2) &&
     !isEmptyString(state.registrationData.location2) &&
+    !isEmptyString(state.registrationData.date) &&
     isEmptyString(state.registrationData.clothes1) &&
     isEmptyString(state.registrationData.location1)
   ) {
     console.log("Reached the if block");
-    const { firstName, lastName, street, zip, city, clothes2, location2 } =
-      state.registrationData;
+    const {
+      firstName,
+      lastName,
+      street,
+      zip,
+      city,
+      clothes2,
+      location2,
+      date,
+    } = state.registrationData;
 
     return (
       <div>
@@ -72,6 +81,10 @@ const OutputRegistration = () => {
               <th>Krisengebiet</th>
               <td>{location2}</td>
             </tr>
+            <tr>
+              <th>Datum und Uhrzeit</th>
+              <td>{date}</td>
+            </tr>
           </tbody>
         </Table>
       </div>
@@ -85,10 +98,11 @@ const OutputRegistration = () => {
     isEmptyString(state.registrationData.clothes2) &&
     isEmptyString(state.registrationData.location2) &&
     !isEmptyString(state.registrationData.clothes1) &&
-    !isEmptyString(state.registrationData.location1)
+    !isEmptyString(state.registrationData.location1) &&
+    !isEmptyString(state.registrationData.date)
   ) {
     console.log("Reached the else if block");
-    const { clothes1, location1 } = state.registrationData;
+    const { clothes1, location1, date } = state.registrationData;
 
     return (
       <div>
@@ -106,6 +120,10 @@ const OutputRegistration = () => {
             <tr>
               <th>Krisengebiet</th>
               <td>{location1}</td>
+            </tr>
+            <tr>
+              <th>Datum und Uhrzeit</th>
+              <td>{date}</td>
             </tr>
           </tbody>
         </Table>

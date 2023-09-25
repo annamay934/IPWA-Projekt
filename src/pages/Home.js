@@ -103,6 +103,7 @@ const HomePage = () => {
             city: [key].city,
             clothes2: [key].clothes2,
             location2: [key].location2,
+            dateAndTime: [key].date,
           };
         }
         setRegistrationData(transformedRegistrationData);

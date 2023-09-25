@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { format } from "date-fns";
 
 const RegistrationForm = (props) => {
   //if clicked on first form, second will be not displayed and vice versa
@@ -15,6 +16,10 @@ const RegistrationForm = (props) => {
     setShowForm2(!showForm2);
     setShowForm1(false);
   };
+
+  //create new Date
+  const currentDate = new Date();
+  const formattedDateAndTime = format(currentDate, "dd.MM.yyyy HH:mm:ss");
 
   //state of the form1 input, clothes1/location1
   const [enteredClothes1, setEnteredClothes1] = useState("");
@@ -264,6 +269,7 @@ const RegistrationForm = (props) => {
       city: enteredCity,
       clothes2: enteredClothes2,
       location2: enteredLocation2,
+      date: formattedDateAndTime,
     };
 
     //Setting the states to empty rows after pressing "submit"
